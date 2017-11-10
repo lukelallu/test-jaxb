@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 xmlns:ifx="IFX2_3"
+	 xmlns:pty="http://www.mtb.com/canonical/schema/MTB/1_5/Party"
+	 xmlns:esb1="http://www.mtb.com/webservices/wsdl/ESBService_v1"
+	 targetNamespace="http://www.mtb.com/canonical/schema/MTB/1_5/Party"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xsd:import namespace="IFX2_3" schemaLocation="http://bookoo.cert.mtb.com/canonical/schema/IFX/2_3/IFX.xsd"/>
+	<xsd:import namespace="http://www.mtb.com/webservices/wsdl/ESBService_v1" schemaLocation="../../../WSDL/ESBService_v1.xsd"/>
+	<xsd:complexType name="PartyAcctRelKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAcctRelKeys_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyKeys_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctKeys_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctType_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctType_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelEnvr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAcctRelEnvr_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelStatus_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAcctRelStatus_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelEnvr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyPartyRelEnvr_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelStatus_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyPartyRelStatus_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyPartyRelKeys_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RelPartyKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RelPartyKeys_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartySel_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartySel_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MsgRqHdr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:MsgRqHdr_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RecCtrlIn_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RecCtrlIn_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DocCtrlIn_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:DocCtrlIn_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MsgRsHdr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:MsgRsHdr_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RecCtrlOut_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RecCtrlOut_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DocCtrlOut_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:DocCtrlOut_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SvcIdent_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:SvcIdent_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyEnvr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyEnvr_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAuth_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAuth_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyStatus_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyStatus_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PostAddr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PostAddr_Type">
+				<xsd:sequence>
+					<xsd:element ref="pty:Addr5" minOccurs="0"/>
+					<xsd:element ref="pty:AddrMailability" minOccurs="0"/>
+					<xsd:element ref="pty:CountyFIPSCode" minOccurs="0"/>
+					<xsd:element ref="pty:Latitude" minOccurs="0"/>
+					<xsd:element ref="pty:Longitude" minOccurs="0"/>
+					<xsd:element ref="pty:UsageType" minOccurs="0"/>
+					<xsd:element ref="pty:MSANumber" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelInqRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="pty:PartyAcctRelSel"/>
+			<xsd:element ref="pty:Limit"/>
+			<xsd:element ref="pty:Offset"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelInqRs_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="pty:PartyAcctRelRec" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:RecordStart" minOccurs="0"/>
+			<xsd:element ref="pty:RecordEnd" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelAddRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="ifx:MsgRqHdr" minOccurs="0"/>
+			<xsd:element ref="pty:PartyPartyRelInfo" minOccurs="0"/>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelAddRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="ifx:Status" minOccurs="0"/>
+				<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+				<xsd:element ref="ifx:MsgRsHdr" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">
+				<xsd:choice>
+					<xsd:element ref="pty:PartyPartyRelRec"/>
+					<xsd:element ref="ifx:PartyPartyRelStatusRec"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelModRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="pty:PartyPartyRelKeys" minOccurs="0"/>
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="pty:PartyPartyRelInfo"/>
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="ifx:DelElements"/>
+					<xsd:element ref="ifx:UpdElements"/>
+					<xsd:element ref="ifx:NewElements"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelModRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="ifx:Status" minOccurs="0"/>
+				<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+				<xsd:element ref="ifx:MsgRsHdr" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">
+				<xsd:choice>
+					<xsd:element ref="pty:PartyPartyRelRec"/>
+					<xsd:element ref="ifx:PartyPartyRelStatusRec"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelDelRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="ifx:MsgRqHdr" minOccurs="0"/>
+			<xsd:element ref="pty:PartyPartyRelKeys"/>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelDelRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="ifx:Status" minOccurs="0"/>
+				<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+				<xsd:element ref="ifx:MsgRsHdr" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">
+				<xsd:choice>
+					<xsd:element ref="pty:PartyPartyRelRec"/>
+					<xsd:element ref="ifx:PartyPartyRelStatusRec"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelAddRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="ifx:MsgRqHdr" minOccurs="0"/>
+			<xsd:element ref="pty:PartyAcctRelInfo" minOccurs="0"/>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelAddRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+				<xsd:element ref="ifx:MsgRsHdr" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">
+				<xsd:choice>
+					<xsd:element ref="pty:PartyAcctRelRec"/>
+					<xsd:element ref="ifx:PartyAcctRelStatusRec"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelModRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="ifx:MsgRqHdr" minOccurs="0"/>
+			<xsd:element ref="pty:PartyAcctRelKeys" minOccurs="0"/>
+			<xsd:sequence maxOccurs="unbounded">
+				<xsd:element ref="pty:PartyAcctRelInfo"/>
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="ifx:DelElements"/>
+					<xsd:element ref="ifx:UpdElements"/>
+					<xsd:element ref="ifx:NewElements"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelModRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+				<xsd:element ref="ifx:MsgRsHdr" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">
+				<xsd:choice>
+					<xsd:element ref="pty:PartyAcctRelRec"/>
+					<xsd:element ref="ifx:PartyAcctRelStatusRec"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelSel_Type">
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element ref="pty:PartyAcctRelKeys"/>
+			<xsd:sequence>
+				<xsd:element ref="pty:PartyKeys" minOccurs="0"/>
+				<xsd:choice minOccurs="0">
+					<xsd:element ref="pty:AcctKeys"/>
+					<xsd:element ref="pty:AcctType"/>
+				</xsd:choice>
+				<xsd:element ref="ifx:PartyAcctRelType" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelRec_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:PartyAcctRelId" minOccurs="0"/>
+			<xsd:element ref="pty:PartyAcctRelInfo" minOccurs="0"/>
+			<xsd:element ref="pty:PartyAcctRelEnvr" minOccurs="0"/>
+			<xsd:element ref="pty:PartyAcctRelStatus" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelInqRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="pty:PartyPartyRelSel"/>
+			<xsd:element ref="pty:Limit"/>
+			<xsd:element ref="pty:Offset"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelInqRs_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="pty:PartyPartyRelRec" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:RecordStart" minOccurs="0"/>
+			<xsd:element ref="pty:RecordEnd" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelRec_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:PartyPartyRelId" minOccurs="0"/>
+			<xsd:element ref="pty:PartyPartyRelInfo" minOccurs="0"/>
+			<xsd:element ref="pty:PartyPartyRelEnvr" minOccurs="0"/>
+			<xsd:element ref="pty:PartyPartyRelStatus" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelSel_Type">
+		<xsd:choice>
+			<xsd:element ref="pty:PartyPartyRelKeys"/>
+			<xsd:sequence>
+				<xsd:sequence>
+					<xsd:element ref="pty:PartyKeys" minOccurs="0"/>
+					<xsd:element ref="pty:RelPartyKeys" minOccurs="0"/>
+					<xsd:element ref="ifx:PartyRelName" minOccurs="0"/>
+					<xsd:element ref="ifx:PartyRelType" minOccurs="0"/>
+					<xsd:element ref="ifx:PartyRole" minOccurs="0"/>
+					<xsd:element ref="ifx:RelPartyRole" minOccurs="0"/>
+					<xsd:element ref="ifx:DtRange" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:sequence>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="PersonPartyInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="pty:PersonData"/>
+					<xsd:element ref="ifx:BirthDt" minOccurs="0"/>
+					<xsd:element ref="ifx:BirthPlace" minOccurs="0"/>
+					<xsd:element ref="ifx:DeceasedDt" minOccurs="0"/>
+					<xsd:element ref="ifx:MotherMaidenName" minOccurs="0"/>
+					<xsd:element ref="ifx:SpouseName" minOccurs="0"/>
+					<xsd:element ref="ifx:Employment" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="ifx:Gender" minOccurs="0"/>
+					<xsd:element ref="ifx:MaritalStat" minOccurs="0"/>
+					<xsd:element ref="ifx:MilitaryRank" minOccurs="0"/>
+					<xsd:element ref="ifx:Dependents" minOccurs="0"/>
+					<xsd:element ref="ifx:OEDCode" minOccurs="0"/>
+					<xsd:element ref="ifx:OEDInstitution" minOccurs="0"/>
+					<xsd:element ref="ifx:OEDRelationship" minOccurs="0"/>
+					<xsd:element ref="ifx:OccupationalStat" minOccurs="0"/>
+					<xsd:element ref="ifx:Nationality" minOccurs="0"/>
+					<xsd:element ref="ifx:ImmigrationStat" minOccurs="0"/>
+					<xsd:element ref="ifx:EducationLevel" minOccurs="0"/>
+					<xsd:element ref="ifx:HomeOwnership" minOccurs="0"/>
+					<xsd:element ref="ifx:HeadofHouseHoldInd" minOccurs="0"/>
+					<xsd:element ref="pty:PEPInd" minOccurs="0"/>
+					<xsd:element ref="pty:DeceasedInd" minOccurs="0"/>
+					<xsd:element ref="pty:EmployeeInd" minOccurs="0"/>
+					<xsd:element ref="pty:Ethnicity" minOccurs="0"/>
+					<xsd:element ref="pty:LegalStatus" minOccurs="0"/>
+					<xsd:element ref="pty:Race" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OrgPartyInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="pty:OrgData"/>
+					<xsd:element ref="ifx:TaxExempt" minOccurs="0"/>
+					<xsd:element ref="ifx:LegalForm" minOccurs="0"/>
+					<xsd:element ref="ifx:OrgEstablishDt" minOccurs="0"/>
+					<xsd:element ref="ifx:NumEmployees" minOccurs="0"/>
+					<xsd:element ref="ifx:FiscalYearEnd" minOccurs="0"/>
+					<xsd:element ref="ifx:FinancialReportsURL" minOccurs="0"/>
+					<xsd:element ref="pty:ValidInd" minOccurs="0"/>
+					<xsd:element ref="ifx:StatusCode" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OrgData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="pty:PartyData_Type">
+				<xsd:sequence>
+					<xsd:element ref="pty:OrgName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="ifx:OrgCategory" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="IssuedIdent_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:IssuedIdent_Type">
+				<xsd:sequence>
+					<xsd:element ref="pty:IssuedCountry" minOccurs="0"/>
+					<xsd:element ref="pty:EffStartDt" minOccurs="0"/>
+					<xsd:element ref="pty:EffEndDt" minOccurs="0"/>
+					<xsd:element ref="ifx:StatusCode" minOccurs="0"/>
+					<xsd:element ref="pty:ValidInd" minOccurs="0"/>
+					<xsd:element ref="pty:LongDesc" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyRec_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:SvcIdent" minOccurs="0"/>
+			<xsd:element ref="pty:MatchScore" minOccurs="0"/>
+			<xsd:element ref="pty:UBOPercentageOwned" minOccurs="0"/>
+			<xsd:element ref="ifx:PartyId" minOccurs="0"/>
+			<xsd:choice>
+				<xsd:element ref="pty:PersonPartyInfo"/>
+				<xsd:element ref="pty:OrgPartyInfo"/>
+			</xsd:choice>
+			<xsd:element ref="pty:PartyEnvr" minOccurs="0"/>
+			<xsd:element ref="pty:PartyAuth" minOccurs="0"/>
+			<xsd:element ref="pty:PartyStatus" minOccurs="0"/>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:PartyScore" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:PartyProfileRole" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:PartyInd" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:PartyLOB" minOccurs="0"/>
+			<xsd:element ref="pty:AcctLOB" minOccurs="0"/>
+			<xsd:element ref="pty:PartyClassification" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:PartyExtendedProfile" minOccurs="0"/>
+			<xsd:element ref="pty:PartyPrivacyPreference" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:BirthCountry" minOccurs="0"/>
+			<xsd:element ref="pty:CitizenshipCountry" minOccurs="0"/>
+			<xsd:element ref="pty:DomicileCountry" minOccurs="0"/>
+			<xsd:element ref="pty:BusinessOperationsCountry" minOccurs="0"/>
+			<xsd:element ref="pty:LegalFormationCountry" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyInqRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID" minOccurs="0"/>
+			<xsd:element ref="pty:PartySel"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyInqRs_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:Status" minOccurs="0"/>
+			<xsd:element ref="ifx:RqUID"/>
+			<xsd:element ref="pty:PartyRec"/>
+			<xsd:element ref="esb1:message"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyRetrieveRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:PartyId"/>
+			<xsd:element ref="pty:DetailRecordInd"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyRetrieveRs_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:Status" minOccurs="0"/>
+			<xsd:element ref="pty:PartyRec" minOccurs="0"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartySearchRs_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:Status" minOccurs="0"/>
+			<xsd:element ref="pty:PartyRec" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:RecordStart" minOccurs="0"/>
+			<xsd:element ref="pty:RecordEnd" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartySearchRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:SearchCriteria" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyRef_Type">
+		<xsd:choice>
+			<xsd:element ref="pty:PartyKeys"/>
+			<xsd:element ref="pty:PartyRec"/>
+			<xsd:choice>
+				<xsd:element ref="pty:PersonPartyInfo"/>
+				<xsd:element ref="pty:OrgPartyInfo"/>
+			</xsd:choice>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="RelPartyRef_Type">
+		<xsd:complexContent>
+			<xsd:extension base="pty:PartyRef_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:RelPartyRole" minOccurs="0"/>
+					<xsd:element ref="ifx:RelEstablishDt" minOccurs="0"/>
+					<xsd:element ref="ifx:TimeFrame" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:PartyRef" minOccurs="0"/>
+			<xsd:element ref="pty:RelPartyRef" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:PartyRelType" minOccurs="0"/>
+			<xsd:element ref="ifx:PartyRelName" minOccurs="0"/>
+			<xsd:element ref="ifx:PartyRelRole" minOccurs="0"/>
+			<xsd:element ref="ifx:OwnerPercent" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:PartyRef" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctRef" minOccurs="0"/>
+			<xsd:element ref="ifx:PartyAcctRelData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:OwnerPercent" minOccurs="0"/>
+			<xsd:element ref="ifx:OwnerInd" minOccurs="0"/>
+			<xsd:element ref="ifx:Nickname" minOccurs="0"/>
+			<xsd:element ref="ifx:PartyRole" minOccurs="0"/>
+			<xsd:element ref="ifx:PartyRelRole" minOccurs="0"/>
+			<xsd:element ref="ifx:PartyAcctRelType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Contact_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:Language" minOccurs="0"/>
+			<xsd:choice>
+				<xsd:choice>
+					<xsd:element ref="ifx:PhoneNum"/>
+					<xsd:element ref="pty:PostAddr"/>
+					<xsd:element ref="ifx:Email"/>
+				</xsd:choice>
+				<xsd:element ref="ifx:ResourceLocator"/>
+			</xsd:choice>
+			<xsd:element ref="ifx:ContactType" minOccurs="0"/>
+			<xsd:element ref="ifx:PreferredInd" minOccurs="0"/>
+			<xsd:element ref="ifx:ContactName" minOccurs="0"/>
+			<xsd:element ref="ifx:TimeFrame" minOccurs="0"/>
+			<xsd:element ref="ifx:JobTitle" minOccurs="0"/>
+			<xsd:element ref="ifx:DoNotSolicitInd" minOccurs="0"/>
+			<xsd:element ref="pty:ValidInd" minOccurs="0"/>
+			<xsd:element ref="ifx:StartDt" minOccurs="0"/>
+			<xsd:element ref="ifx:EndDt" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyData_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:Contact" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="pty:IssuedIdent" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PersonData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="pty:PartyData_Type">
+				<xsd:sequence>
+					<xsd:element ref="pty:PersonName" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="OrgData" type="pty:OrgData_Type"/>
+	<xsd:element name="PartyData" type="pty:PartyData_Type"/>
+	<xsd:element name="PersonData" type="pty:PersonData_Type"/>
+	<xsd:element name="Contact" type="pty:Contact_Type"/>
+	<xsd:element name="PostAddr" type="pty:PostAddr_Type"/>
+	<xsd:element name="PartyRef" type="pty:PartyRef_Type"/>
+	<xsd:element name="RelPartyRef" type="pty:RelPartyRef_Type"/>
+	<xsd:element name="PartyPartyRelSel" type="pty:PartyPartyRelSel_Type"/>
+	<xsd:element name="PartyPartyRelRec" type="pty:PartyPartyRelRec_Type"/>
+	<xsd:element name="PartyPartyRelInqRq" type="pty:PartyPartyRelInqRq_Type"/>
+	<xsd:element name="PartyPartyRelInqRs" type="pty:PartyPartyRelInqRs_Type"/>
+	<xsd:element name="PartyAcctRelInqRq" type="pty:PartyAcctRelInqRq_Type"/>
+	<xsd:element name="PartyAcctRelInqRs" type="pty:PartyAcctRelInqRs_Type"/>
+	<xsd:element name="PartyAcctRelRec" type="pty:PartyAcctRelRec_Type"/>
+	<xsd:element name="PartyAcctRelSel" type="pty:PartyAcctRelSel_Type"/>
+	<xsd:element name="PartyAcctRelKeys" type="pty:PartyAcctRelKeys_Type"/>
+	<xsd:element name="PartyKeys" type="pty:PartyKeys_Type"/>
+	<xsd:element name="AcctKeys" type="pty:AcctKeys_Type"/>
+	<xsd:element name="PartyAcctRelInfo" type="pty:PartyAcctRelInfo_Type"/>
+	<xsd:element name="PartyAcctRelEnvr" type="pty:PartyAcctRelEnvr_Type"/>
+	<xsd:element name="PartyAcctRelStatus" type="pty:PartyAcctRelStatus_Type"/>
+	<xsd:element name="PartyPartyRelInfo" type="pty:PartyPartyRelInfo_Type"/>
+	<xsd:element name="PartyPartyRelEnvr" type="pty:PartyPartyRelEnvr_Type"/>
+	<xsd:element name="PartyPartyRelStatus" type="pty:PartyPartyRelStatus_Type"/>
+	<xsd:element name="AcctType" type="pty:AcctType_Type"/>
+	<xsd:element name="PartyPartyRelKeys" type="pty:PartyPartyRelKeys_Type"/>
+	<xsd:element name="RelPartyKeys" type="pty:RelPartyKeys_Type"/>
+	<xsd:element name="PartySel" type="pty:PartySel_Type"/>
+	<xsd:element name="SvcIdent" type="pty:SvcIdent_Type"/>
+	<xsd:element name="PartyEnvr" type="pty:PartyEnvr_Type"/>
+	<xsd:element name="PartyAuth" type="pty:PartyAuth_Type"/>
+	<xsd:element name="PartyStatus" type="pty:PartyStatus_Type"/>
+	<xsd:element name="PersonPartyInfo" type="pty:PersonPartyInfo_Type"/>
+	<xsd:element name="OrgPartyInfo" type="pty:OrgPartyInfo_Type"/>
+	<xsd:element name="PartyInqRq" type="pty:PartyInqRq_Type"/>
+	<xsd:element name="PartyRec" type="pty:PartyRec_Type"/>
+	<xsd:element name="PartyInqRs" type="pty:PartyInqRs_Type"/>
+	<xsd:element name="PartyRetrieveRq" type="pty:PartyRetrieveRq_Type"/>
+	<xsd:element name="PartyRetrieveRs" type="pty:PartyRetrieveRs_Type"/>
+	<xsd:element name="PartySearchRs" type="pty:PartySearchRs_Type"/>
+	<xsd:element name="PartySearchRq" type="pty:PartySearchRq_Type"/>
+	<xsd:element name="MatchScore" type="ifx:Long_Type"/>
+	<xsd:element name="DetailRecordInd" type="ifx:Boolean_Type"/>
+	<xsd:element name="Limit">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:minInclusive value="10"/>
+				<xsd:maxInclusive value="200"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="Offset">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:minInclusive value="1"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="MSANumber" type="xsd:string"/>
+	<xsd:element name="AddrMailability" type="xsd:string"/>
+	<xsd:element name="CountyFIPSCode" type="xsd:string"/>
+	<xsd:element name="Latitude" type="xsd:string"/>
+	<xsd:element name="Longitude" type="xsd:string"/>
+	<xsd:element name="UsageType" type="xsd:string"/>
+	<xsd:element name="ValidInd" type="xsd:string"/>
+	<xsd:element name="PrivacyPreferenceValue" type="xsd:string"/>
+	<xsd:element name="PrivacyPreferenceType">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="DoNotMailInternal"/>
+				<xsd:enumeration value="AffiliateSharingExternal"/>
+				<xsd:enumeration value="DNMInternalReason"/>
+				<xsd:enumeration value="DoNotMailExternal"/>
+				<xsd:enumeration value="PrimaryAddress"/>
+				<xsd:enumeration value="InvalidPartyAddressReason"/>
+				<xsd:enumeration value="ValidForPartyAddress"/>
+				<xsd:enumeration value="DoNotEmailInternal"/>
+				<xsd:enumeration value="DNEMLInternalReason"/>
+				<xsd:enumeration value="DoNotEmailExternal"/>
+				<xsd:enumeration value="InvalidPartyElecAddrReason"/>
+				<xsd:enumeration value="ValidForPartyEmail"/>
+				<xsd:enumeration value="DoNotCallInternal"/>
+				<xsd:enumeration value="DNCInternalReason"/>
+				<xsd:enumeration value="DoNotTextInternal"/>
+				<xsd:enumeration value="DNTInternalReason"/>
+				<xsd:enumeration value="DoNotCallExternal"/>
+				<xsd:enumeration value="PrimaryPhone"/>
+				<xsd:enumeration value="InvalidPartyPhoneReason"/>
+				<xsd:enumeration value="ValidForPartyPhone"/>
+				<xsd:enumeration value="AffiliateSharingInternal"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="PartyProfileRoleTypeCode" type="xsd:string"/>
+	<xsd:element name="UBOPercentageOwned" type="xsd:string"/>
+	<xsd:element name="RelationshipType" type="xsd:string"/>
+	<xsd:element name="ScoreType" type="xsd:string"/>
+	<xsd:element name="ScoreValue" type="xsd:string"/>
+	<xsd:element name="PEPInd" type="xsd:string"/>
+	<xsd:element name="DeceasedInd" type="xsd:string"/>
+	<xsd:element name="EmployeeInd" type="xsd:string"/>
+	<xsd:element name="Ethnicity" type="xsd:string"/>
+	<xsd:element name="LegalStatus" type="xsd:string"/>
+	<xsd:element name="Race" type="xsd:string"/>
+	<xsd:element name="PKeySrcObject" type="xsd:string"/>
+	<xsd:element name="SrcSystem" type="xsd:string"/>
+	<xsd:complexType name="AcctProdKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:AcctId"/>
+			<xsd:element ref="ifx:ProductIdent"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AcctProdKeys" type="pty:AcctProdKeys_Type"/>
+	<xsd:complexType name="Name_Type">
+		<xsd:choice>
+			<xsd:element ref="pty:PersonName"/>
+			<xsd:element ref="pty:OrgName"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="PersonName_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:Language" minOccurs="0"/>
+			<xsd:element ref="pty:FullName" minOccurs="0"/>
+			<xsd:element ref="pty:FamilyName" minOccurs="0"/>
+			<xsd:element ref="pty:GivenName" minOccurs="0"/>
+			<xsd:element ref="ifx:MiddleName" minOccurs="0"/>
+			<xsd:element ref="ifx:NamePrefix" minOccurs="0"/>
+			<xsd:element ref="ifx:NameSuffix" minOccurs="0"/>
+			<xsd:element ref="ifx:MaternalName" minOccurs="0"/>
+			<xsd:element ref="ifx:PaternalName" minOccurs="0"/>
+			<xsd:element ref="ifx:MarriedName" minOccurs="0"/>
+			<xsd:element ref="ifx:PreferredName" minOccurs="0"/>
+			<xsd:element ref="ifx:LegalNameInd" minOccurs="0"/>
+			<xsd:element ref="ifx:PriorNameInd" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="PersonName" type="pty:PersonName_Type"/>
+	<xsd:element name="Name" type="pty:Name_Type"/>
+	<xsd:element name="PartyId" type="ifx:Identifier_Type"/>
+	<xsd:complexType name="PartyInfoType">
+		<xsd:sequence>
+			<xsd:element ref="pty:BinICA" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Bank Customer Number</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PreviousBinICA" type="ifx:BinICA_Type" minOccurs="0"/>
+			<xsd:element ref="ifx:PersonData" minOccurs="0"/>
+			<xsd:element ref="ifx:MotherMaidenName" minOccurs="0"/>
+			<xsd:element ref="ifx:TaxIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:BirthDt" minOccurs="0"/>
+			<xsd:element ref="ifx:Gender" minOccurs="0"/>
+			<xsd:element ref="ifx:Language" minOccurs="0"/>
+			<xsd:element name="Indicators" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PromoInd" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="VipInd" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="AcceptEmailMsgSwitch" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="AcceptSmsMsgSwitch" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="AcceptTrackingSwitch" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="EmployeeSwitch" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="ProgramPreviewSwitch" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="CustomerReplacementInd" type="xsd:boolean" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ProprietarySegmentationCluster" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PhoneNum_Type">
+		<xsd:sequence>
+			<xsd:element name="PhoneType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Business,Home,Fax,Mobile</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="ifx:OpenEnum_Type">
+						<xsd:enumeration value="Business"/>
+						<xsd:enumeration value="Home"/>
+						<xsd:enumeration value="Fax"/>
+						<xsd:enumeration value="Mobile"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Phone" type="ifx:PhoneNumber_Type"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Language" type="ifx:Language_Type"/>
+	<xsd:element name="BinICA" type="ifx:BinICA_Type"/>
+	<xsd:element name="MotherMaidenName" type="ifx:MotherMaidenName_Type"/>
+	<xsd:element name="TaxIdent" type="pty:tinLastFour_type"/>
+	<xsd:simpleType name="tinLastFour_type">
+		<xsd:restriction base="xsd:integer">
+			<xsd:pattern value="[0-9][0-9][0-9][0-9]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="PartyUpdateStatus">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="PartyUpdateStatusCode">
+					<xsd:simpleType>
+						<xsd:restriction base="ifx:OpenEnum_Type"/>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element ref="ifx:StatusDesc" minOccurs="0"/>
+				<xsd:element ref="ifx:EffDt" minOccurs="0"/>
+				<xsd:element ref="ifx:ApprovalIdent" minOccurs="0"/>
+				<xsd:element ref="ifx:StatusModBy" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="clientApp">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="ifx:ClientApp_Type">
+					<xsd:sequence>
+						<xsd:element name="Channel" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Addr5" type="xsd:string"/>
+	<xsd:complexType name="PartyScore_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:ScoreType"/>
+			<xsd:element ref="pty:ScoreValue"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="PartyScore" type="pty:PartyScore_Type"/>
+	<xsd:element name="PartyProfileRoleTypeDesc" type="xsd:string"/>
+	<xsd:complexType name="PartyProfileRole_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:PartyProfileRoleTypeCode"/>
+			<xsd:element ref="pty:PartyProfileRoleTypeDesc" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="PartyProfileRole" type="pty:PartyProfileRole_Type"/>
+	<xsd:complexType name="SrcKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:PKeySrcObject" minOccurs="0"/>
+			<xsd:element ref="pty:SrcSystem" minOccurs="0"/>
+			<xsd:element ref="pty:PKeyType" minOccurs="0"/>
+			<xsd:element ref="pty:AltName" minOccurs="0"/>
+			<xsd:element ref="pty:AltNameType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="SrcKeys" type="pty:SrcKeys_Type"/>
+	<xsd:complexType name="PartyInd_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:IndType"/>
+			<xsd:element ref="pty:IndValue"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="IndType">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="TPPP"/>
+				<xsd:enumeration value="KYCComplete"/>
+				<xsd:enumeration value="WISD"/>
+				<xsd:enumeration value="DoNoBusinessWith"/>
+				<xsd:enumeration value="SMSAllowed"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="IndValue" type="xsd:string"/>
+	<xsd:element name="PartyInd" type="pty:PartyInd_Type"/>
+	<xsd:complexType name="PartyManageRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:PartyRec"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyManageRs_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:Status" minOccurs="0"/>
+			<xsd:element ref="ifx:PartyId" minOccurs="0"/>
+			<xsd:element ref="pty:SrcKeys" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="esb1:message" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="IssuedCountry" type="xsd:string"/>
+	<xsd:element name="IssuedIdent" type="pty:IssuedIdent_Type"/>
+	<xsd:element name="PartyManageRq" type="pty:PartyManageRq_Type"/>
+	<xsd:element name="PartyManageRs" type="pty:PartyManageRs_Type"/>
+	<xsd:element name="PartyLOB" type="xsd:string"/>
+	<xsd:element name="AcctLOB" type="xsd:string"/>
+	<xsd:element name="EffStartDt" type="xsd:dateTime"/>
+	<xsd:element name="EffEndDt" type="xsd:dateTime"/>
+	<xsd:element name="AltName" type="xsd:string"/>
+	<xsd:element name="AltNameType" type="xsd:string"/>
+	<xsd:element name="Type" type="xsd:string"/>
+	<xsd:element name="Value" type="xsd:string"/>
+	<xsd:complexType name="PartyClassification_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:Type" minOccurs="0"/>
+			<xsd:element ref="pty:Value" minOccurs="0"/>
+			<xsd:element ref="ifx:StatusCode" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="PartyClassification" type="pty:PartyClassification_Type"/>
+	<xsd:element name="KYCCompleteDate" type="xsd:date"/>
+	<xsd:element name="KYCPartyType" type="xsd:string"/>
+	<xsd:element name="KYCPartyTypeDesc" type="xsd:string"/>
+	<xsd:element name="KYCRefrestDate" type="xsd:date"/>
+	<xsd:element name="KYCSourceOfWealth" type="xsd:string"/>
+	<xsd:complexType name="PartyExtendedProfile_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:KYCCompleteDate" minOccurs="0"/>
+			<xsd:element ref="pty:KYCPartyType" minOccurs="0"/>
+			<xsd:element ref="pty:KYCPartyTypeDesc" minOccurs="0"/>
+			<xsd:element ref="pty:KYCRefrestDate" minOccurs="0"/>
+			<xsd:element ref="pty:KYCSourceOfWealth" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="PartyExtendedProfile" type="pty:PartyExtendedProfile_Type"/>
+	<xsd:complexType name="PartyPrivacyPreference_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:PrivacyPreferenceValue" minOccurs="0"/>
+			<xsd:element ref="pty:PrivacyPreferenceType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="PartyPrivacyPreference" type="pty:PartyPrivacyPreference_Type"/>
+	<xsd:element name="LongDesc" type="xsd:string"/>
+	<xsd:element name="PKeyType">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="Address"/>
+				<xsd:enumeration value="Org"/>
+				<xsd:enumeration value="Party"/>
+				<xsd:enumeration value="PartyAltId"/>
+				<xsd:enumeration value="PartyAltName"/>
+				<xsd:enumeration value="PartyClassification"/>
+				<xsd:enumeration value="PartyCountry"/>
+				<xsd:enumeration value="PartyEmail"/>
+				<xsd:enumeration value="PartyExtdProfile"/>
+				<xsd:enumeration value="PartyInternalOrg"/>
+				<xsd:enumeration value="PartyPhone"/>
+				<xsd:enumeration value="PartyPrivacyPref"/>
+				<xsd:enumeration value="PartyProfile"/>
+				<xsd:enumeration value="PartyScore"/>
+				<xsd:enumeration value="Person"/>
+				<xsd:enumeration value="Account"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:complexType name="SearchCriteria_Type">
+		<xsd:sequence>
+			<xsd:element ref="pty:Name" minOccurs="0"/>
+			<xsd:element ref="ifx:Addr1" minOccurs="0"/>
+			<xsd:element ref="ifx:Addr2" minOccurs="0"/>
+			<xsd:element ref="ifx:Addr3" minOccurs="0"/>
+			<xsd:element ref="ifx:Addr4" minOccurs="0"/>
+			<xsd:element ref="ifx:City" minOccurs="0"/>
+			<xsd:element ref="ifx:StateProv" minOccurs="0"/>
+			<xsd:element ref="ifx:CountryCode" minOccurs="0"/>
+			<xsd:element ref="ifx:PostalCode" minOccurs="0"/>
+			<xsd:element ref="ifx:BirthDt" minOccurs="0"/>
+			<xsd:element ref="ifx:Phone" minOccurs="0"/>
+			<xsd:element ref="ifx:EmailAddr" minOccurs="0"/>
+			<xsd:element ref="pty:Limit"/>
+			<xsd:element ref="pty:Offset"/>
+			<xsd:element ref="pty:AcctProdKeys" minOccurs="0"/>
+			<xsd:element ref="ifx:IssuedIdentValue" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="SearchCriteria" type="pty:SearchCriteria_Type"/>
+	<xsd:element name="RecordStart" type="xsd:int"/>
+	<xsd:element name="RecordEnd" type="xsd:int"/>
+	<xsd:element name="FullName">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:maxLength value="150"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="FamilyName">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:maxLength value="50"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="GivenName">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:maxLength value="50"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:complexType name="OrgName_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:Language" minOccurs="0"/>
+			<xsd:sequence>
+				<xsd:element ref="pty:FullName" minOccurs="0"/>
+				<xsd:element ref="pty:LegalName" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="LegalName">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:maxLength value="150"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="OrgName" type="pty:OrgName_Type"/>
+	<xsd:complexType name="CitizenshipCountry_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CountryCode_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DomicileCountry_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CountryCode_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LegalFormationCountry_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CountryCode_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BirthCountry_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CountryCode_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessOperationsCountry_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CountryCode_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="CitizenshipCountry" type="pty:CitizenshipCountry_Type"/>
+	<xsd:element name="DomicileCountry" type="pty:DomicileCountry_Type"/>
+	<xsd:element name="LegalFormationCountry" type="pty:LegalFormationCountry_Type"/>
+	<xsd:element name="BirthCountry" type="pty:BirthCountry_Type"/>
+	<xsd:element name="BusinessOperationsCountry" type="pty:BusinessOperationsCountry_Type"/>
+	<xsd:element name="PartyAcctRelAddRq" type="pty:PartyAcctRelAddRq_Type"/>
+	<xsd:element name="PartyAcctRelAddRs" type="pty:PartyAcctRelAddRs_Type"/>
+	<xsd:element name="PartyAcctRelModRq" type="pty:PartyAcctRelModRq_Type"/>
+	<xsd:element name="PartyAcctRelModRs" type="pty:PartyAcctRelModRs_Type"/>
+	<xsd:element name="PartyPartyRelModRq" type="pty:PartyPartyRelModRq_Type"/>
+	<xsd:element name="PartyPartyRelModRs" type="pty:PartyPartyRelModRs_Type"/>
+	<xsd:element name="PartyPartyRelAddRq" type="pty:PartyPartyRelAddRq_Type"/>
+	<xsd:element name="PartyPartyRelAddRs" type="pty:PartyPartyRelAddRs_Type"/>
+	<xsd:element name="PartyPartyRelDelRq" type="pty:PartyPartyRelDelRq_Type"/>
+	<xsd:element name="PartyPartyRelDelRs" type="pty:PartyPartyRelDelRs_Type"/>
+</xsd:schema>

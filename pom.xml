@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.test.jaxb</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <artifactId>test-jaxb</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Test JAXB</name>
+    <description>JAXB Sample</description>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+            <version>2.4.0.RELEASE</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-jxc-jdk9</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>javax.activation-api</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>jaxb2-maven-plugin</artifactId>
+                    <version>2.3.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!--<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.3.1</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <arguments>
+                        <argument>-XautoNameResolution</argument>
+                    </arguments>
+            &lt;!&ndash;		<sourceType>wsdl</sourceType>&ndash;&gt;
+                    <xjbSources>
+                        <xjbSource>src/main/resources/global.xjb</xjbSource>
+                    </xjbSources>
+                    <sources>
+                    &lt;!&ndash;	<source>src/main/resources</source>&ndash;&gt;
+                        <source>src/main/resources/SharedResources/WSDL/ESBService_v1.xsd</source>
+                        <source>src/main/resources/SharedResources/SchemaDefinitions/PartyAcctRelation/PartyAcctRelation.xsd</source>
+                    </sources>
+                </configuration>
+            </plugin>-->
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.13.2</version>
+                <executions>
+                    <execution>
+                        <id>ifxmodel</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+
+                            <extension>true</extension>
+                            <strict>true</strict>
+                            <args>
+                                <arg>-XautoNameResolution</arg>
+                            </args>
+                            <schemaDirectory>src/main/resources</schemaDirectory>
+                            <schemaIncludes>
+                                <!--<include>Secure_SecurityService_V1_0_0.wsdl</include>-->
+                                <include>SharedResources/WSDL/ESBService_v1.xsd</include>
+                                <include>SharedResources/SchemaDefinitions/PartyAcctRelation/PartyAcctRelation.xsd
+                                </include>
+                            </schemaIncludes>
+                            <bindingDirectory>src/main/resources/binding</bindingDirectory>
+                            <bindingIncludes>
+                                <include>global.xjb</include>
+                            </bindingIncludes>
+                            <generateDirectory>target/generated-sources/xjc</generateDirectory>
+                        </configuration>
+                    </execution>
+            <!--        <execution>
+                        <id>securitymodel</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+
+                            <extension>true</extension>
+                            <strict>true</strict>
+                            <args>
+                                <arg>-XautoNameResolution</arg>
+                            </args>
+                            <schemaDirectory>src/main/resources/wsdl</schemaDirectory>
+                            <schemaIncludes>
+                                <include>Secure_SecurityService_V1_0_0.wsdl</include>
+                                <generatePackage>com.rsa.csd.ws</generatePackage>
+                            </schemaIncludes>
+                            <generateDirectory>${basedir}/src/main/java</generateDirectory>
+                        </configuration>
+                    </execution>-->
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/jaxb/</source>
+                                <source>${project.build.directory}/generated-sources/xjc/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

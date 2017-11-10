@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:tns="http://www.mtb.com/webservices/wsdl/SoapHeader_v2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.mtb.com/webservices/wsdl/SoapHeader_v2">
+    <wsdl:import location="SoapHeader_v2.xsd" namespace="http://www.mtb.com/webservices/wsdl/SoapHeader_v2"/>
+    <wsdl:types>
+        <xsi:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema">
+            <xsi:import namespace="http://www.mtb.com/webservices/wsdl/SoapHeader_v2" schemaLocation="SoapHeader_v2.xsd"/>
+        </xsi:schema>
+    </wsdl:types>
+    <wsdl:message name="ESBHeader">
+        <wsdl:part element="tns:ESBHeader" name="ESBHeader"/>
+    </wsdl:message>
+</wsdl:definitions>

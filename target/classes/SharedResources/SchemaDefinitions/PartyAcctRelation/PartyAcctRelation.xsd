@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- edited with XMLSpy v2008 rel. 2 sp2 (http://www.altova.com) by M&T BANK (M&T BANK) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns:ifx23="IFX2_3"
+	xmlns:act="http://www.mtb.com/canonical/schema/MTB/1_2/Account"
+	 xmlns:esb1="http://www.mtb.com/webservices/wsdl/ESBService_v1"
+	 xmlns:pacct10="http://www.mtb.com/canonical/schema/mtb/1_0/PartyAcctRelation"
+	 targetNamespace="http://www.mtb.com/canonical/schema/mtb/1_0/PartyAcctRelation"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.mtb.com/webservices/wsdl/ESBService_v1" schemaLocation="../../../SharedResources/WSDL/ESBService_v1.xsd"/>
+	<xs:import namespace="IFX2_3" schemaLocation="../IFX/2_3/IFX.xsd"/>
+	<xs:import namespace="http://www.mtb.com/canonical/schema/MTB/1_2/Account" schemaLocation="../MTB/1_2/Account.xsd"/>
+	
+	<xs:complexType name="PartyAcctRelModRq_Type">
+		<xs:sequence>
+			<xs:element ref="ifx23:RqUID"/>
+			<xs:element ref="ifx23:MsgRqHdr" minOccurs="0"/>
+			<xs:element ref="ifx23:PartyAcctRelKeys"/>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="pacct10:PartyAcctRelInfo"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="ifx23:DelElements"/>
+					<xs:element ref="ifx23:UpdElements"/>
+					<xs:element ref="ifx23:NewElements"/>
+				</xs:choice>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyAcctRelModRs_Type">
+		<xs:sequence>
+			<xs:sequence>
+				<xs:element ref="ifx23:Status" minOccurs="0"/>
+				<xs:element ref="ifx23:RqUID"/>
+				<xs:element ref="ifx23:MsgRsHdr" minOccurs="0"/>
+			</xs:sequence>
+			<xs:sequence minOccurs="0">
+				<xs:choice>
+					<xs:element ref="pacct10:PartyAcctRelRec" maxOccurs="unbounded"/>
+					<xs:element ref="ifx23:PartyAcctRelStatusRec" maxOccurs="unbounded"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:element ref="esb1:message"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyAcctRelRec_Type">
+		<xs:sequence>
+			<xs:element ref="ifx23:SvcIdent" minOccurs="0"/>
+			<xs:element ref="ifx23:PartyAcctRelId"/>
+			<xs:element ref="pacct10:PartyAcctRelInfo"/>
+			<xs:element ref="ifx23:PartyAcctRelEnvr" minOccurs="0"/>
+			<xs:element ref="ifx23:PartyAcctRelStatus" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyAcctRelKeys_Type">
+		<xs:complexContent>
+			<xs:extension base="ifx23:BaseKeys_Type">
+				<xs:sequence>
+					<xs:element ref="ifx23:SvcIdent" minOccurs="0"/>
+					<xs:choice>
+						<xs:element ref="ifx23:PartyAcctRelId"/>
+						<xs:sequence>
+							<xs:element ref="ifx23:PartyKeys"/>
+							<xs:element ref="ifx23:AcctKeys"/>
+						</xs:sequence>
+					</xs:choice>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PartyCardRelRec_Type">
+		<xs:sequence>
+			<xs:element ref="ifx23:SvcIdent" minOccurs="0"/>
+			<xs:element ref="ifx23:PartyCardRelId"/>
+			<xs:element name="PartyCardRelInfo" type="pacct10:PartyCardRelInfo_Type"/>
+			<xs:element ref="ifx23:PartyCardRelEnvr" minOccurs="0"/>
+			<xs:element ref="ifx23:PartyCardRelStatus"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyCardRelInfo_Type">
+		<xs:sequence>
+			<xs:element ref="ifx23:PartyRef"/>
+			<xs:element ref="ifx23:RelAcctRef"/>
+			<xs:element ref="ifx23:PartyCardRelType"/>
+			<xs:element ref="ifx23:CardRef" minOccurs="0"/>
+			<xs:element ref="ifx23:Nickname" minOccurs="0"/>
+			<xs:element ref="ifx23:RelEstablishDt" minOccurs="0"/>
+			<xs:element ref="ifx23:CardPref" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyAcctRelInfo_Type">
+		<xs:sequence>
+			<xs:element ref="ifx23:PartyRef"/>
+			<xs:element ref="pacct10:AcctRef" minOccurs="0"/>
+			<xs:element ref="pacct10:RegInfo" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:PartyAcctRelData" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:OwnerPercent" minOccurs="0"/>
+			<xs:element ref="ifx23:OwnerInd" minOccurs="0"/>
+			<xs:element ref="ifx23:Nickname" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RegInfo_Type">
+		<xs:sequence>
+			<xs:element ref="pacct10:RiskAssessId" minOccurs="0"/>
+			<xs:element ref="pacct10:QuestionAnswer" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AcctRef_Type">
+		<xs:choice>
+			<xs:element ref="ifx23:AcctKeys"/>
+			<xs:element ref="pacct10:AcctRec"/>
+			<xs:element ref="pacct10:AcctInfo"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AcctRec_Type">
+		<xs:sequence>
+			<xs:element ref="ifx23:SvcIdent" minOccurs="0"/>
+			<xs:element ref="ifx23:AcctId"/>
+			<xs:element ref="pacct10:AcctInfo"/>
+			<xs:element ref="ifx23:AcctEnvr" minOccurs="0"/>
+			<xs:element ref="ifx23:AcctStatus"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="OpenSource_Type">
+		<xs:restriction base="ifx23:ClosedEnum_Type">
+			<xs:enumeration value="IP"/>
+			<xs:enumeration value="Web"/>
+			<xs:enumeration value="Phone"/>
+			<xs:enumeration value="Mail"/>
+			<xs:enumeration value="Mobile"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AcctInfo_Type">
+		<xs:sequence>
+			<xs:element ref="ifx23:FundingMethod" minOccurs="0"/>
+			<xs:element ref="pacct10:AcctOpenSrc" minOccurs="0"/>
+			<xs:element ref="pacct10:AcctRestraint" minOccurs="0"/>
+			<xs:element ref="ifx23:CurCode" minOccurs="0"/>
+			<xs:element ref="ifx23:Desc" minOccurs="0"/>
+			<xs:element ref="ifx23:AcctIdent" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:BBAN" minOccurs="0"/>
+			<xs:element ref="ifx23:IBAN" minOccurs="0"/>
+			<xs:element ref="ifx23:UPIC" minOccurs="0"/>
+			<xs:element ref="ifx23:CLABE" minOccurs="0"/>
+			<xs:element ref="ifx23:FIData" minOccurs="0"/>
+			<xs:element ref="ifx23:AcctUse" minOccurs="0"/>
+			<xs:choice minOccurs="0">
+				<xs:element ref="ifx23:Term"/>
+				<xs:element ref="ifx23:MaturityDt"/>
+			</xs:choice>
+			<xs:element ref="ifx23:IntRateData" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:TaxWithholding" minOccurs="0"/>
+			<xs:element ref="ifx23:TaxCountry" minOccurs="0"/>
+			<xs:element ref="ifx23:TaxProvince" minOccurs="0"/>
+			<xs:element ref="ifx23:ProductIdent" minOccurs="0"/>
+			<xs:element ref="ifx23:DaysCall" minOccurs="0"/>
+			<xs:element ref="ifx23:InitialAmount" minOccurs="0"/>
+			<xs:element ref="ifx23:AcctType" minOccurs="0"/>
+			<xs:element ref="ifx23:AcctTaxType" minOccurs="0"/>
+			<xs:element ref="ifx23:AcctTitle" minOccurs="0"/>
+			<xs:element ref="ifx23:Memo" minOccurs="0"/>
+			<xs:element ref="ifx23:OpenDt" minOccurs="0"/>
+			<xs:element ref="ifx23:ClosedDt" minOccurs="0"/>
+			<xs:element ref="ifx23:RelationshipMgr" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:PostAddr" minOccurs="0"/>
+			<xs:element ref="ifx23:MktgMaterial" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="act:AcctBal" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:AcctPeriodData" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:GraceEndDt" minOccurs="0"/>
+			<xs:element ref="ifx23:RemainingPmtCount" minOccurs="0"/>
+			<xs:element ref="ifx23:AcctTrnLimit" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:TaxWithheldData" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:DepAcctData" minOccurs="0"/>
+			<xs:element ref="ifx23:CreditAcctData" minOccurs="0"/>
+			<xs:element ref="ifx23:AcctPricing" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:CorporateAcctData" minOccurs="0"/>
+			<xs:element ref="ifx23:CorrespondDelivery" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:Segmentation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:AcctApplIdent" minOccurs="0"/>
+			<xs:element ref="ifx23:CampaignIdent" minOccurs="0"/>
+			<xs:element ref="ifx23:Ownership" minOccurs="0"/>
+			<xs:element ref="ifx23:StmtTimeFrame" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ifx23:NextStmtData" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QuestionAnswer_Type">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="ifx23:QuestionIdent"/>
+				<xs:element ref="ifx23:Question"/>
+			</xs:choice>
+			<xs:element ref="ifx23:Selection" minOccurs="0"/>
+			<xs:element ref="ifx23:Answer" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyAcctRelInqRq_Type">
+		<xs:sequence>
+			<xs:element ref="ifx23:RqUID"/>
+			<xs:element ref="ifx23:MsgRqHdr" minOccurs="0"/>
+			<xs:element ref="ifx23:DocCtrlIn" minOccurs="0"/>
+			<xs:element ref="ifx23:RecCtrlIn" minOccurs="0"/>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="pacct10:PartyAcctRelSel"/>
+				<xs:element ref="ifx23:RecSelect"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyAcctRelInqRs_Type">
+		<xs:sequence>
+			<xs:sequence>
+				<xs:element ref="ifx23:Status" minOccurs="0"/>
+				<xs:element ref="ifx23:RqUID"/>
+				<xs:element ref="ifx23:MsgRsHdr" minOccurs="0"/>
+			</xs:sequence>
+			<xs:sequence minOccurs="0">
+				<xs:element ref="ifx23:DocCtrlOut" minOccurs="0"/>
+				<xs:element ref="ifx23:RecCtrlOut" minOccurs="0"/>
+				<xs:element ref="pacct10:PartyAcctRelRec" maxOccurs="unbounded"/>
+			</xs:sequence>
+	<xs:element ref="esb1:message"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyKeys_Type">
+		<xs:complexContent>
+			<xs:extension base="ifx23:BaseKeys_Type">
+				<xs:sequence>
+					<xs:element ref="ifx23:SvcIdent" minOccurs="0"/>
+					<xs:choice>
+						<xs:element ref="pacct10:PartyNameId"/>
+						<xs:element ref="ifx23:PartyId"/>
+						<xs:element ref="ifx23:LoginIdent"/>
+					</xs:choice>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PartyAcctRelSel_Type">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element ref="ifx23:PartyAcctRelKeys"/>
+			<xs:sequence>
+				<xs:element ref="pacct10:PartyKeys" minOccurs="0"/>
+				<xs:choice minOccurs="0">
+					<xs:element ref="ifx23:AcctKeys"/>
+					<xs:element ref="ifx23:AcctType"/>
+				</xs:choice>
+				<xs:element ref="ifx23:PartyAcctRelType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PartyNameId_Type">
+		<xs:sequence>
+			<xs:element ref="ifx23:FullName"/>
+			<xs:element ref="ifx23:IssuedIdentType"/>
+			<xs:element ref="ifx23:IssuedIdentValue"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AcctRestraint_Type">
+		<xs:sequence>
+			<xs:element ref="pacct10:AcctRestraintClass"/>
+			<xs:element ref="pacct10:AcctRestraintType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PartyAcctRelModRq" type="pacct10:PartyAcctRelModRq_Type"/>
+	<xs:element name="PartyAcctRelModRs" type="pacct10:PartyAcctRelModRs_Type"/>
+	<xs:element name="PartyAcctRelKeys" type="pacct10:PartyAcctRelKeys_Type"/>
+	<xs:element name="PartyAcctRelInfo" type="pacct10:PartyAcctRelInfo_Type"/>
+	<xs:element name="RegInfo" type="pacct10:RegInfo_Type"/>
+	<xs:element name="QuestionAnswer" type="pacct10:QuestionAnswer_Type"/>
+	<xs:element name="RiskAssessId" type="xs:string"/>
+	<xs:element name="AcctRef" type="pacct10:AcctRef_Type"/>
+	<xs:element name="AcctRec" type="pacct10:AcctRec_Type"/>
+	<xs:element name="AcctInfo" type="pacct10:AcctInfo_Type"/>
+	<xs:element name="AcctOpenSrc" type="pacct10:OpenSource_Type"/>
+	<xs:element name="PartyAcctRelRec" type="pacct10:PartyAcctRelRec_Type"/>
+	<xs:element name="PartyAcctRelInqRq" type="pacct10:PartyAcctRelInqRq_Type"/>
+	<xs:element name="PartyAcctRelInqRs" type="pacct10:PartyAcctRelInqRs_Type"/>
+	<xs:element name="PartyAcctRelSel" type="pacct10:PartyAcctRelSel_Type"/>
+	<xs:element name="PartyKeys" type="pacct10:PartyKeys_Type"/>
+	<xs:element name="PartyNameId" type="pacct10:PartyNameId_Type"/>
+	<xs:element name="AcctRestraint" type="pacct10:AcctRestraint_Type"/>
+	<xs:element name="AcctRestraintClass" type="ifx23:OpenEnum_Type"/>
+	<xs:element name="AcctRestraintType" type="ifx23:OpenEnum_Type"/>
+</xs:schema>

@@ -1,0 +1,1421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns1="http://schemas.mandtbank.com/EHF" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://wsdl.mandtbank.com/Customer/CustomerToAccountOpImpl/BusinessProcesses/CustomerView/CustomerToAccount/StarterProcesses" xmlns:ns0="http://schemas.mandtbank.com/Customer" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://wsdl.mandtbank.com/Customer/CustomerToAccountOpImpl/BusinessProcesses/CustomerView/CustomerToAccount/StarterProcesses">
+    <wsdl:types>
+        <xs:schema xmlns="http://schemas.mandtbank.com/Customer" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.mandtbank.com/Customer" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="CustomerToAccountRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Header">
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="ns0:commonElementsType">
+                                        <xs:sequence>
+                                            <xs:element name="Region" type="xs:string" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="CompanyID" type="ns0:integer4"/>
+                        <xs:element name="CustomerName" type="ns0:string40"/>
+                        <xs:element name="TieBreaker" type="ns0:integer4"/>
+                        <xs:element name="NextEntry" type="ns0:integer4" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CustomerToAccountResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="AcctSummary" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="ns0:acctSummaryType">
+                                        <xs:sequence>
+                                            <xs:element name="NextEntry" type="ns0:integer4" minOccurs="0"/>
+                                            <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="HoganBatchStatus" type="ns0:enumType" minOccurs="0"/>
+                        <xs:element name="Warning" type="ns0:warningType" minOccurs="0"/>
+                        <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="accountInfoType">
+                <xs:sequence>
+                    <xs:element name="AcctNbr" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="25"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="ApplNbr" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="ProductCode" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Will be from BPS Code set</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="3"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="SubPrdtCode" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Will be from BPS Code set</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="5"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="RelCode" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="3"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Region" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="IsNew" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Existing"/>
+                                <xs:enumeration value="New"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="CostCtr" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="10"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="IsExpnPricing" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Indicates if the account has any exceptions in terms of pricing details.</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Yes"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="VerificationFlag" type="ns0:stringYN" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>If account number needs to be verified</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="acctSummaryType">
+                <xs:sequence>
+                    <xs:element name="CustomerName" type="ns0:string40" minOccurs="0"/>
+                    <xs:element name="TieBreaker" type="ns0:integer4" minOccurs="0"/>
+                    <xs:element name="CompanyID" type="ns0:integer4" minOccurs="0"/>
+                    <xs:element name="ProductCode" type="ns0:string3" minOccurs="0"/>
+                    <xs:element name="SubPrdtCode" type="ns0:string5" minOccurs="0"/>
+                    <xs:element name="SourceSystem" type="ns0:string6" minOccurs="0"/>
+                    <xs:element name="AcctNbr" type="ns0:string25" minOccurs="0"/>
+                    <xs:element name="RelCode" type="ns0:string3" minOccurs="0"/>
+                    <xs:element name="AcctStatus" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                                <xs:element name="Description" minOccurs="0">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="New"/>
+                                            <xs:enumeration value="Inactive-small Business"/>
+                                            <xs:enumeration value="Dormant"/>
+                                            <xs:enumeration value="Escheatable"/>
+                                            <xs:enumeration value="Closed"/>
+                                            <xs:enumeration value="Purgeable"/>
+                                            <xs:enumeration value="Active-no Auto Close"/>
+                                            <xs:enumeration value="Matured CD"/>
+                                            <xs:enumeration value="Pending Close"/>
+                                            <xs:enumeration value="Pending Escheat"/>
+                                            <xs:enumeration value="New Customer"/>
+                                            <xs:enumeration value="Hot ATM-VISA card"/>
+                                            <xs:enumeration value="Repeat Overdraft"/>
+                                            <xs:enumeration value="Charged off- Closed"/>
+                                            <xs:enumeration value="Deposit only-ATM Account"/>
+                                            <xs:enumeration value="Charged off - Open"/>
+                                            <xs:enumeration value="Active"/>
+                                            <xs:enumeration value=""/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="PercentageOwnedAccount" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="7"/>
+                                <xs:fractionDigits value="4"/>
+                                <xs:pattern value="\d{1,3}(\.\d{1,4})?"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="AnalysisIndicator" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="PricingIndicator" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="StatementIndicator" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="PreferredClientIndicator" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="AccountOpenDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="AccountClosedDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="CostCtr" type="ns0:string7" minOccurs="0"/>
+                    <xs:element name="WebBillPayDate" type="xs:date" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="additionalInfoType">
+                <xs:sequence>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" namespace="##any"/>
+                </xs:sequence>
+                <xs:anyAttribute processContents="strict" namespace="##any"/>
+            </xs:complexType>
+            <xs:complexType name="additionalInfoType1">
+                <xs:sequence>
+                    <xs:element name="ServiceChargeCycleCode" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="ns0:string2"/>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Indicator" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Name" type="xs:string" minOccurs="0"/>
+                                <xs:element name="Value" type="xs:string" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="StartingPromoDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="EndingPromoDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="sinceVersion" fixed="1.1.0" type="xs:string"/>
+            </xs:complexType>
+            <xs:complexType name="additionalInfoType2">
+                <xs:sequence>
+                    <xs:element name="LOBInd" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="ns0:string3"/>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="ForeignCountryCode" type="ns0:string2" minOccurs="0"/>
+                    <xs:element name="ForeignTaxID" type="ns0:string22" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="sinceVersion" fixed="1.1.0" type="xs:string"/>
+            </xs:complexType>
+            <xs:complexType name="addressType">
+                <xs:sequence>
+                    <xs:element name="Address" type="ns0:string40" minOccurs="0"/>
+                    <xs:element name="Address1" type="ns0:string40" minOccurs="0"/>
+                    <xs:element name="Address2" type="ns0:string40" minOccurs="0"/>
+                    <xs:element name="City" type="ns0:string25" minOccurs="0"/>
+                    <xs:element name="State" type="ns0:string15" minOccurs="0"/>
+                    <xs:element name="ZipCode" type="ns0:string9" minOccurs="0"/>
+                    <xs:element name="CountryCode" type="ns0:string2" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="amountType11">
+                <xs:restriction base="xs:decimal">
+                    <xs:totalDigits value="13"/>
+                    <xs:fractionDigits value="2"/>
+                    <xs:pattern value="[+-]?\d{1,11}(\.\d{1,2})?"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="amountType5">
+                <xs:restriction base="xs:decimal">
+                    <xs:totalDigits value="7"/>
+                    <xs:fractionDigits value="2"/>
+                    <xs:pattern value="[+-]?\d{1,5}(\.\d{1,2})?"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="amountType6">
+                <xs:restriction base="xs:decimal">
+                    <xs:totalDigits value="8"/>
+                    <xs:fractionDigits value="2"/>
+                    <xs:pattern value="[+-]?\d{1,6}(\.\d{1,2})?"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="amountType7">
+                <xs:restriction base="xs:decimal">
+                    <xs:totalDigits value="9"/>
+                    <xs:fractionDigits value="2"/>
+                    <xs:pattern value="[+-]?\d{1,7}(\.\d{1,2})?"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="amountType9">
+                <xs:restriction base="xs:decimal">
+                    <xs:totalDigits value="11"/>
+                    <xs:fractionDigits value="2"/>
+                    <xs:pattern value="[+-]?\d{1,9}(\.\d{1,2})?"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="bundleInfoType">
+                <xs:sequence>
+                    <xs:element name="BundleID">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="16"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Channel">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="10"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Branch" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="5"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="UpdatedBy" type="ns0:createType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="bundleRespType">
+                <xs:sequence>
+                    <xs:element name="BundleID" type="ns0:string16"/>
+                    <xs:element name="CustomerInfo">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Name" type="ns0:string100">
+                                    <xs:annotation>
+                                        <xs:documentation>Business name or customer name depending on the Customer type</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="Identifier" type="ns0:identifier"/>
+                                <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="NeedsAssessmentID" type="xs:string" minOccurs="0"/>
+                    <xs:element name="ProductDtls" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="ProductID" type="xs:string"/>
+                                <xs:element name="BundleProductID" type="xs:string"/>
+                                <xs:element name="AccountInfo" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="BundleProductAcctID" type="xs:string"/>
+                                            <xs:element name="AcctNbr" type="ns0:string25" minOccurs="0"/>
+                                            <xs:element name="ProductCode" type="ns0:string3" minOccurs="0"/>
+                                            <xs:element name="SubPrdtCode" type="ns0:string5" minOccurs="0"/>
+                                            <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="Type" use="required">
+                    <xs:annotation>
+                        <xs:documentation>BUS or PER</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:complexType>
+            <xs:complexType name="channelType">
+                <xs:sequence>
+                    <xs:element name="VolumeMTD" type="ns0:signedInteger9" minOccurs="0"/>
+                    <xs:element name="VolumeYTD" type="ns0:signedInteger9" minOccurs="0"/>
+                    <xs:element name="ExpensesMTD" type="ns0:amountType5" minOccurs="0"/>
+                    <xs:element name="ExpensesYTD" type="ns0:amountType5" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="codeSetType">
+                <xs:sequence>
+                    <xs:element name="ProductCode" type="ns0:string3"/>
+                    <xs:element name="SubPrdtCode" type="ns0:string5"/>
+                    <xs:element name="SourceSystem" type="ns0:string6"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="commonElementsType">
+                <xs:sequence>
+                    <xs:element name="requestingApp" type="xs:string"/>
+                    <xs:element name="userID" type="xs:string"/>
+                    <xs:element name="password" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="contributionType">
+                <xs:sequence>
+                    <xs:element name="ContributionMTD" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="ContributionYTD" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createType">
+                <xs:sequence>
+                    <xs:element name="UserID" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Sales representative LAN ID</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="10"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="EmpNbr" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Sales representative employee number</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="10"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="FirstName" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>First name of the sales representative</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="25"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="LastName" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Last name of the sales representative</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:minLength value="1"/>
+                                <xs:maxLength value="40"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="customerProfileInfoType">
+                <xs:sequence>
+                    <xs:element name="CustomerInfo" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="CompanyID" type="ns0:string5" minOccurs="0"/>
+                                <xs:element name="CustomerName" type="ns0:string40" minOccurs="0"/>
+                                <xs:element name="TieBreaker" type="ns0:string5" minOccurs="0"/>
+                                <xs:element name="CustomerNumber" type="ns0:string15" minOccurs="0"/>
+                                <xs:element name="CustomerName2" type="ns0:string40" minOccurs="0"/>
+                                <xs:element name="CustomerType" minOccurs="0">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                                            <xs:element name="Description" minOccurs="0">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Individual customer"/>
+                                                        <xs:enumeration value="Commercial customer individual"/>
+                                                        <xs:enumeration value="Commercial customer business"/>
+                                                        <xs:enumeration value=""/>
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:element>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="CustomerCode" type="ns0:string2" minOccurs="0"/>
+                                <xs:element name="CustomerStatus" type="ns0:string2" minOccurs="0"/>
+                                <xs:element name="Branch" type="ns0:string5" minOccurs="0"/>
+                                <xs:element name="CostCtr" type="ns0:string7" minOccurs="0"/>
+                                <xs:element name="DateOpened" type="xs:date" minOccurs="0"/>
+                                <xs:element name="Officer1" type="ns0:string5" minOccurs="0"/>
+                                <xs:element name="Officer2" type="ns0:string5" minOccurs="0"/>
+                                <xs:element name="Identifier" type="ns0:identifier" minOccurs="0"/>
+                                <xs:element name="TaxIDSuffix" type="ns0:string1" minOccurs="0"/>
+                                <xs:element name="SensitivityCode" type="ns0:string1" minOccurs="0"/>
+                                <xs:element name="AdvertisingIndicator" type="ns0:enumType" minOccurs="0"/>
+                                <xs:element name="EmployeeIndicator" type="ns0:enumType" minOccurs="0"/>
+                                <xs:element name="LanguageCode" type="ns0:string3" minOccurs="0"/>
+                                <xs:element name="DateClosed" type="xs:date" minOccurs="0"/>
+                                <xs:element name="DateBankrupt" type="xs:date" minOccurs="0"/>
+                                <xs:element name="DateLastMaintain" type="xs:date" minOccurs="0"/>
+                                <xs:element name="DateOfBirth" type="xs:date" minOccurs="0"/>
+                                <xs:element name="MaritalStatus" minOccurs="0">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                                            <xs:element name="Description" minOccurs="0">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Married"/>
+                                                        <xs:enumeration value="Divorce"/>
+                                                        <xs:enumeration value="Separated"/>
+                                                        <xs:enumeration value="Unmarried"/>
+                                                        <xs:enumeration value=""/>
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:element>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Sex" minOccurs="0">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                                            <xs:element name="Description" minOccurs="0">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Male"/>
+                                                        <xs:enumeration value="Female"/>
+                                                        <xs:enumeration value=""/>
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:element>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="PersonalPhone" type="ns0:string16" minOccurs="0"/>
+                                <xs:element name="OccupationCode" type="ns0:string4" minOccurs="0"/>
+                                <xs:element name="PlaceOfWork" type="ns0:string40" minOccurs="0"/>
+                                <xs:element name="BusinessPhone" type="ns0:string16" minOccurs="0"/>
+                                <xs:element name="DateDeceased" type="xs:date" minOccurs="0"/>
+                                <xs:element name="DateBusinessEstablished" type="xs:date" minOccurs="0"/>
+                                <xs:element name="StandardIndustrialClassificationCode" type="ns0:string4" minOccurs="0"/>
+                                <xs:element name="ContactInfo" minOccurs="0">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="Name" type="ns0:string40" minOccurs="0"/>
+                                            <xs:element name="Phone" type="ns0:string16" minOccurs="0"/>
+                                            <xs:element name="FaxNumber" type="ns0:string16" minOccurs="0"/>
+                                            <xs:element name="Title" type="ns0:string40" minOccurs="0"/>
+                                            <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="WorkOfficer1" type="ns0:string40" minOccurs="0"/>
+                                <xs:element name="WorkOfficer2" type="ns0:string40" minOccurs="0"/>
+                                <xs:element name="CustomerAddress" minOccurs="0">
+                                    <xs:complexType>
+                                        <xs:complexContent>
+                                            <xs:extension base="ns0:addressType">
+                                                <xs:sequence>
+                                                    <xs:element name="AddressTie" type="ns0:string4" minOccurs="0"/>
+                                                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                                                </xs:sequence>
+                                            </xs:extension>
+                                        </xs:complexContent>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="AdditionalInfo" type="ns0:additionalInfoType2" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="BankInfo" minOccurs="0" maxOccurs="20">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="RelationshipCode" type="ns0:string3" minOccurs="0"/>
+                                <xs:element name="ServiceCode" type="ns0:string3" minOccurs="0"/>
+                                <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ddaAcctType">
+                <xs:sequence>
+                    <xs:element name="InterestCode" type="ns0:string2" minOccurs="0"/>
+                    <xs:element name="AcctStatus" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                                <xs:element name="Description" minOccurs="0">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="New"/>
+                                            <xs:enumeration value="New Significant Business"/>
+                                            <xs:enumeration value="Inactive Small Business"/>
+                                            <xs:enumeration value="Inactive Large Business"/>
+                                            <xs:enumeration value="Dormant"/>
+                                            <xs:enumeration value="Escheatable"/>
+                                            <xs:enumeration value="Closed"/>
+                                            <xs:enumeration value="Purgeable"/>
+                                            <xs:enumeration value="Active - No Auto Close"/>
+                                            <xs:enumeration value="Matured CD"/>
+                                            <xs:enumeration value="Pending Close"/>
+                                            <xs:enumeration value="Pending Escheat"/>
+                                            <xs:enumeration value="New Customer"/>
+                                            <xs:enumeration value="Active"/>
+                                            <xs:enumeration value=""/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="SubPrdtCode" type="ns0:string2" minOccurs="0"/>
+                    <xs:element name="SourceSystem" type="ns0:string6" minOccurs="0"/>
+                    <xs:element name="CurrentBalance" type="ns0:amountType11" minOccurs="0"/>
+                    <xs:element name="BusinessFastFundIndicator" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="BaseInterestCode" type="ns0:string2" minOccurs="0"/>
+                    <xs:element name="InterestBenefitExpiryIndicator" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="BundleIndicator" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="ODProduct" type="ns0:string3" minOccurs="0"/>
+                    <xs:element name="RLNo" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:totalDigits value="17"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="ODAccount" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:totalDigits value="15"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="RBCDateSevered" type="xs:date" minOccurs="0"/>
+                    <xs:element name="DDADateSevered" type="xs:date" minOccurs="0"/>
+                    <xs:element name="RBCDateLinked" type="xs:date" minOccurs="0"/>
+                    <xs:element name="DDADateLinked" type="xs:date" minOccurs="0"/>
+                    <xs:element name="DateOpened" type="xs:date" minOccurs="0"/>
+                    <xs:element name="DateClosed" type="xs:date" minOccurs="0"/>
+                    <xs:element name="CostCtr" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:pattern value="[+-]?\d{1,7}"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="BonusType" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="BonusRatePoints" minOccurs="0" maxOccurs="12">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="7"/>
+                                <xs:fractionDigits value="5"/>
+                                <xs:pattern value="[+-]?\d{1,2}(\.\d{1,5})?"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="BonusExpiryDate" type="xs:date" minOccurs="0" maxOccurs="12"/>
+                    <xs:element name="CreditInterest" type="ns0:string4" minOccurs="0"/>
+                    <xs:element name="PrimaryAcctNbr" type="ns0:string25" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType1" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="enumType">
+                <xs:sequence>
+                    <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Description" type="ns0:stringYNB" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="errorType">
+                <xs:sequence>
+                    <xs:element name="ErrorCode" type="xs:string"/>
+                    <xs:element name="ErrorDesc" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="houseHoldInfoType">
+                <xs:sequence>
+                    <xs:element name="FileDate" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="HouseHoldNumber" type="ns0:integer10" minOccurs="0"/>
+                    <xs:element name="PackageCode" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="PackageDescription" type="ns0:string15" minOccurs="0"/>
+                    <xs:element name="Channel" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="ATM" type="ns0:channelType" minOccurs="0"/>
+                                <xs:element name="ACH" type="ns0:channelType" minOccurs="0"/>
+                                <xs:element name="VirtualResponseUnit" type="ns0:channelType" minOccurs="0"/>
+                                <xs:element name="QuickLine" type="ns0:channelType" minOccurs="0"/>
+                                <xs:element name="BillPay" type="ns0:channelType" minOccurs="0"/>
+                                <xs:element name="Teller" type="ns0:channelType" minOccurs="0"/>
+                                <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ATMCardIndicator" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="ATMCardLastUsed" type="xs:date" minOccurs="0"/>
+                    <xs:element name="CustomerLastName" type="ns0:string15" minOccurs="0"/>
+                    <xs:element name="Segment" type="ns0:string20" minOccurs="0"/>
+                    <xs:element name="ProfitabilityRange" type="ns0:string7" minOccurs="0"/>
+                    <xs:element name="PrimeBranch" type="ns0:string4" minOccurs="0"/>
+                    <xs:element name="Region" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="Products" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Deposits" type="ns0:productSummaryType" minOccurs="0"/>
+                                <xs:element name="Loans" type="ns0:productSummaryType" minOccurs="0"/>
+                                <xs:element name="Others" type="ns0:productSummaryType" minOccurs="0"/>
+                                <xs:element name="Total" type="ns0:productSummaryType" minOccurs="0"/>
+                                <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="SegmentAvg" type="ns0:contributionType" minOccurs="0"/>
+                    <xs:element name="RegionAvg" type="ns0:contributionType" minOccurs="0"/>
+                    <xs:element name="MarketingMessage" type="ns0:string70" minOccurs="0"/>
+                    <xs:element name="NoOutsideSharing" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                                <xs:element name="Description" minOccurs="0">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Opt Out-Do not Share"/>
+                                            <xs:enumeration value="Opt In-Share"/>
+                                            <xs:enumeration value=""/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="NoInsideSharing" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                                <xs:element name="Description" minOccurs="0">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Opt Out-Do not Share"/>
+                                            <xs:enumeration value="Opt In-Share"/>
+                                            <xs:enumeration value=""/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="DoNotMail" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="DoNotCall" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="RegulationO" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="EmployeeIndicator" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="TotalAccounts" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:totalDigits value="4"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="AllAccountsIncluded" type="ns0:enumType" minOccurs="0"/>
+                    <xs:element name="AccountInfo" minOccurs="0" maxOccurs="40">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="ProductCode" type="ns0:string7" minOccurs="0"/>
+                                <xs:element name="AcctNbr" minOccurs="0">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:minLength value="0"/>
+                                            <xs:maxLength value="25"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="Branch" type="ns0:string3" minOccurs="0"/>
+                                <xs:element name="DateOpened" type="xs:date" minOccurs="0"/>
+                                <xs:element name="AverageBalance" type="ns0:signedInteger9" minOccurs="0"/>
+                                <xs:element name="AccountContributionMTD" type="ns0:amountType5" minOccurs="0"/>
+                                <xs:element name="AccountContributionYTD" type="ns0:amountType7" minOccurs="0"/>
+                                <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="identifier">
+                <xs:sequence>
+                    <xs:element name="Value" type="ns0:string15"/>
+                    <xs:element name="Type" type="ns0:string4"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="integer10">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="10"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="integer15">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="15"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="integer2">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="2"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="integer4">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="4"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="integer5">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="5"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="integer7">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="7"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="integer9">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="9"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="nonDepositAcctType">
+                <xs:sequence>
+                    <xs:element name="OriginalAmount" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:pattern value="[+-]?\d{1,9}"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="LoanDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="PropertyValue" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:pattern value="[+-]?\d{1,9}"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="InterestRate" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="7"/>
+                                <xs:fractionDigits value="5"/>
+                                <xs:pattern value="\d{1,2}(\.\d{1,5})?"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="FirstIRChangeDate" type="ns0:string4" minOccurs="0"/>
+                    <xs:element name="LoanMatures" type="ns0:integer4" minOccurs="0"/>
+                    <xs:element name="PaymentPeriod" type="ns0:string2" minOccurs="0"/>
+                    <xs:element name="FirstPrincipalBalance" type="ns0:amountType9" minOccurs="0"/>
+                    <xs:element name="EscrowBalance" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="DueDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="LastTransactionDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="AccruedLateCharge" type="ns0:amountType5" minOccurs="0"/>
+                    <xs:element name="FirstPrincipalInterest" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="EscrowMortgageAmount" type="ns0:amountType5" minOccurs="0"/>
+                    <xs:element name="EffectiveDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="MaintainanceFlag" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="Address" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="PropertyAddress" type="ns0:string30" minOccurs="0"/>
+                                <xs:element name="PropertyAddress1" type="ns0:string30" minOccurs="0"/>
+                                <xs:element name="PropertyAddress2" type="ns0:string30" minOccurs="0"/>
+                                <xs:element name="PropertyZip" type="ns0:string5" minOccurs="0"/>
+                                <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="DateLastRefresh" type="xs:date" minOccurs="0"/>
+                    <xs:element name="DateClosed" type="xs:date" minOccurs="0"/>
+                    <xs:element name="EscrowAdvanceBalance" type="ns0:amountType5" minOccurs="0"/>
+                    <xs:element name="StopDontProcess" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="StopBadCheck" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="StopPaidInFull" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="StopForeclosure" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="BillMode" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="AutoDeductAccount" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="PaymentFrequency" type="ns0:string2" minOccurs="0"/>
+                    <xs:element name="PendingPaymentAmount" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="PendingPaymentEffectiveDate" type="ns0:string6" minOccurs="0"/>
+                    <xs:element name="PaymentAmount" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="TotalDue" type="ns0:amountType6" minOccurs="0"/>
+                    <xs:element name="MonthlyLateChargeAmount" type="ns0:amountType5" minOccurs="0"/>
+                    <xs:element name="MonthlyReturnCheckFeeBalance" type="ns0:amountType5" minOccurs="0"/>
+                    <xs:element name="OtherFeeBalance" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="PastDuePayments" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:totalDigits value="3"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="InterestPaidYTD" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="InterestPaidPriorYear" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="TaxesPaidYTD" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="TaxesPaidPriorYear" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="OutstandingChargesFee" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="BankRoutingTransitNumber" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:pattern value="[+-]?\d{1,8}"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="DeferredPrincipalBalance" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="CombinedPrincipalBalance" type="ns0:amountType9" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="paginationReqType">
+                <xs:sequence>
+                    <xs:element name="StartingRecNo" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:minInclusive value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="NoOfRecReqested" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:minInclusive value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="paginationRespType">
+                <xs:sequence>
+                    <xs:element name="StartingRecNo" type="xs:integer" minOccurs="0"/>
+                    <xs:element name="NoOfRecReqested" type="xs:integer" minOccurs="0"/>
+                    <xs:element name="RecordsReturned" type="xs:integer" minOccurs="0"/>
+                    <xs:element name="TotalRecords" type="xs:integer" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="productDtlsType">
+                <xs:sequence>
+                    <xs:element name="ProductID" type="xs:string"/>
+                    <xs:element name="AcctNbr" type="ns0:string25" minOccurs="0"/>
+                    <xs:element name="ApplNbr" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="ProductCode" type="ns0:string3" minOccurs="0"/>
+                    <xs:element name="SubPrdtCode" type="ns0:string5" minOccurs="0"/>
+                    <xs:element name="Region" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Identifier" type="ns0:identifier" minOccurs="0"/>
+                    <xs:element name="RelCode" type="ns0:string3" minOccurs="0"/>
+                    <xs:element name="IsNew" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Specifies if the corresponding account is new or already exists.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="CostCtr" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="IsExpnPricing" type="ns0:stringYN" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Specifies if the corresponding account has any exception in pricing.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="productInfoType">
+                <xs:sequence>
+                    <xs:element name="TieBreaker" type="ns0:integer4" minOccurs="0"/>
+                    <xs:element name="CompanyID" type="ns0:integer4" minOccurs="0"/>
+                    <xs:element name="ProductCode" type="ns0:string3" minOccurs="0"/>
+                    <xs:element name="SubPrdtCode" type="ns0:string5" minOccurs="0"/>
+                    <xs:element name="SourceSystem" type="ns0:string6" minOccurs="0"/>
+                    <xs:element name="AccountID" type="ns0:string25" minOccurs="0"/>
+                    <xs:element name="RelCode" type="ns0:string3" minOccurs="0"/>
+                    <xs:element name="AcctStatus" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="New"/>
+                                <xs:enumeration value="Inactive-small business"/>
+                                <xs:enumeration value="Dormant"/>
+                                <xs:enumeration value="Escheatable"/>
+                                <xs:enumeration value="Closed"/>
+                                <xs:enumeration value="Purgeable"/>
+                                <xs:enumeration value="Active-no auto close"/>
+                                <xs:enumeration value="Matured CD"/>
+                                <xs:enumeration value="Pending close"/>
+                                <xs:enumeration value="Pending escheat"/>
+                                <xs:enumeration value="New customer"/>
+                                <xs:enumeration value="Hot ATM-VISA card"/>
+                                <xs:enumeration value="Repeat overdraft"/>
+                                <xs:enumeration value="Charged off- Closed"/>
+                                <xs:enumeration value="Deposit only-ATM account"/>
+                                <xs:enumeration value="Charged off - Open"/>
+                                <xs:enumeration value="Active"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="PercentageOwnedAccount" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="7"/>
+                                <xs:fractionDigits value="4"/>
+                                <xs:pattern value="\d{1,3}(\.\d{1,4})?"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="AnalysisIndicator" type="ns0:stringYN" minOccurs="0"/>
+                    <xs:element name="PricingIndicator" type="ns0:stringYN" minOccurs="0"/>
+                    <xs:element name="StatementIndicator" type="ns0:stringYN" minOccurs="0"/>
+                    <xs:element name="PaymentCycleSellingIND" type="ns0:stringYN" minOccurs="0"/>
+                    <xs:element name="NextEntry" type="ns0:integer4" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="productSummaryType">
+                <xs:sequence>
+                    <xs:element name="AverageBalance" type="ns0:signedInteger9" minOccurs="0"/>
+                    <xs:element name="Income" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="Expenses" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="ContributionMTD" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="ContributionYTD" type="ns0:amountType7" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="remarksInfoType">
+                <xs:sequence>
+                    <xs:element name="OccupationNbr" type="ns0:string5" minOccurs="0"/>
+                    <xs:element name="ExpiryDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="DatePlaced" type="xs:date" minOccurs="0"/>
+                    <xs:element name="CustomerRemarks" type="ns0:string40" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="reportType">
+                <xs:sequence>
+                    <xs:element name="IsSuccess" type="xs:boolean" minOccurs="0"/>
+                    <xs:element name="BundleID" type="xs:string" minOccurs="0"/>
+                    <xs:element name="AcctNbr" type="xs:string" minOccurs="0"/>
+                    <xs:element name="BundleInd" type="xs:string" minOccurs="0"/>
+                    <xs:element name="BenefitExpInd" type="xs:string" minOccurs="0"/>
+                    <xs:element name="CreditInterest" type="xs:string" minOccurs="0"/>
+                    <xs:element name="StartingPromoDate" type="xs:string" minOccurs="0"/>
+                    <xs:element name="EndingPromoDate" type="xs:string" minOccurs="0"/>
+                    <xs:element name="HoganBatchMode" type="xs:string" minOccurs="0"/>
+                    <xs:element name="StatusCode" type="xs:string" minOccurs="0"/>
+                    <xs:element name="ErrorCode" type="xs:string" minOccurs="0"/>
+                    <xs:element name="ErrorMsg" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="signedInteger9">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="9"/>
+                    <xs:pattern value="[+-]?\d{1,9}"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="stmtIndType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Combined"/>
+                    <xs:enumeration value="Electronic"/>
+                    <xs:enumeration value="Printable"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string1">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string10">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="10"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string100">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="100"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string15">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="15"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string16">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="16"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string2">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="2"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string20">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="20"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string22">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="22"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string25">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="25"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string250">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="250"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string3">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="3"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string30">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="30"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string4">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="4"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string40">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="40"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string5">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="5"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string50">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="50"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string6">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="6"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string7">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="7"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string70">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="70"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string9">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="9"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string90">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="90"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="stringYN">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Yes"/>
+                    <xs:enumeration value="No"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="stringYNB">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Yes"/>
+                    <xs:enumeration value="No"/>
+                    <xs:enumeration value=""/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="tdaAcctType">
+                <xs:sequence>
+                    <xs:element name="DateOpened" type="xs:date" minOccurs="0"/>
+                    <xs:element name="DateClosed" type="xs:date" minOccurs="0"/>
+                    <xs:element name="CurrentBalance" type="ns0:amountType11" minOccurs="0"/>
+                    <xs:element name="CostCtr" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                                <xs:pattern value="[+-]?\d{1,7}"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="InterestRate" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="7"/>
+                                <xs:fractionDigits value="5"/>
+                                <xs:pattern value="[+-]?\d{1,2}(\.\d{1,5})?"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="BonusType" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="BonusRatePoints" minOccurs="0" maxOccurs="12">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="7"/>
+                                <xs:fractionDigits value="5"/>
+                                <xs:pattern value="[+-]?\d{1,2}(\.\d{1,5})?"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="BonusExpiryDate" type="xs:date" minOccurs="0" maxOccurs="12"/>
+                    <xs:element name="IRAPlanTypeCode" type="ns0:string2" minOccurs="0"/>
+                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="warningType">
+                <xs:sequence>
+                    <xs:element name="WarningCode" type="xs:string"/>
+                    <xs:element name="WarningDesc" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="webAcctType">
+                <xs:sequence>
+                    <xs:element name="ProductCode" type="ns0:string3" minOccurs="0"/>
+                    <xs:element name="AcctNbr" type="ns0:string25" minOccurs="0"/>
+                    <xs:element name="WebCustType" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="WebFaxNumber" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="WebSecurityName" type="ns0:string16" minOccurs="0"/>
+                    <xs:element name="WebTradingFlag" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="WebTransferDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="WebBillPayDt" type="xs:date" minOccurs="0"/>
+                    <xs:element name="WebLastSessDt" type="xs:date" minOccurs="0"/>
+                    <xs:element name="WebLastPfmDt" type="xs:date" minOccurs="0"/>
+                    <xs:element name="WebLastPfmVers" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="WebBillingAcct" type="ns0:integer15" minOccurs="0"/>
+                    <xs:element name="WebPromoCode" type="ns0:string4" minOccurs="0"/>
+                    <xs:element name="WebNoWaiveCycs" type="ns0:string2" minOccurs="0"/>
+                    <xs:element name="WebWaiveEffDt" type="xs:date" minOccurs="0"/>
+                    <xs:element name="WebWaiveDesc" type="ns0:string20" minOccurs="0"/>
+                    <xs:element name="WebWvCostCenter" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="WebPinOffset2" type="ns0:string2" minOccurs="0"/>
+                    <xs:element name="WebPinOffset3" type="ns0:string4" minOccurs="0"/>
+                    <xs:element name="WebUserId" type="ns0:string25" minOccurs="0"/>
+                    <xs:element name="WebMarketing1" type="ns0:string10" minOccurs="0"/>
+                    <xs:element name="WebMarketing2" type="ns0:string5" minOccurs="0"/>
+                    <xs:element name="WebLstPchgDtTm" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="WebLstPrstDt" type="xs:date" minOccurs="0"/>
+                    <xs:element name="WebNoOfPinResets" type="ns0:integer2" minOccurs="0"/>
+                    <xs:element name="WebBillPaysPriorMon" type="ns0:string7" minOccurs="0"/>
+                    <xs:element name="WebPfmEnrollDt" type="xs:date" minOccurs="0"/>
+                    <xs:element name="WebPfmCancelDt" type="xs:date" minOccurs="0"/>
+                    <xs:element name="WebBillPayCancel" type="ns0:string9" minOccurs="0"/>
+                    <xs:element name="WebEnrollmentType" type="ns0:string1" minOccurs="0"/>
+                    <xs:element name="WebBatchRefresh" type="ns0:string9" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns="http://schemas.mandtbank.com/EHF" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.mandtbank.com/EHF" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="additionalInfoType">
+                <xs:sequence>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" namespace="##any"/>
+                </xs:sequence>
+                <xs:anyAttribute processContents="strict" namespace="##any"/>
+            </xs:complexType>
+            <xs:element name="ContactInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Mail" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="MailFrom" type="xs:string"/>
+                                    <xs:element name="MailTo" type="xs:string"/>
+                                    <xs:element name="MailServer" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Names" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element name="AdditionalInfo" type="ns1:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Error">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Err_Code" type="xs:token"/>
+                        <xs:element name="Err_Msg" type="xs:string" minOccurs="0"/>
+                        <xs:element name="Severity" minOccurs="0">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:token">
+                                    <xs:enumeration value="High"/>
+                                    <xs:enumeration value="Low"/>
+                                    <xs:enumeration value="Medium"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="StackTrace" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CatchBlockDetails" type="xs:string" minOccurs="0"/>
+                        <xs:element name="AdditionalInfo" type="ns1:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ErrorDetails">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns1:Logging"/>
+                        <xs:element ref="ns1:Error" minOccurs="0"/>
+                        <xs:element name="FileData" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="FileName" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="LastModifiedDateTime" type="xs:dateTime" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="ns1:Generic"/>
+                        <xs:element ref="ns1:ContactInfo" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ErrorInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ErrorCode" type="xs:string" minOccurs="0"/>
+                        <xs:element name="ErrorMessage" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FaultDetails">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="FaultCode" type="xs:string"/>
+                        <xs:element name="FaultString" type="xs:string" minOccurs="0"/>
+                        <xs:element name="InputMessage" type="xs:string" minOccurs="0"/>
+                        <xs:element name="Timestamp" type="xs:dateTime" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Generic">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="CallingAppName" type="xs:string"/>
+                        <xs:element name="UserID" type="xs:string"/>
+                        <xs:element name="Environment">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="DEV"/>
+                                    <xs:enumeration value="TEST"/>
+                                    <xs:enumeration value="CERT"/>
+                                    <xs:enumeration value="PROD"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="ProcessID" type="xs:string" minOccurs="0"/>
+                        <xs:element name="ProjectName" type="xs:string"/>
+                        <xs:element name="ServiceName" type="xs:string"/>
+                        <xs:element name="ActivityName" type="xs:string"/>
+                        <xs:element name="Timestamp" type="xs:dateTime"/>
+                        <xs:element name="ServerName" type="xs:string"/>
+                        <xs:element name="AdditionalInfo" type="ns1:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Logging">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Level">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:token">
+                                    <xs:enumeration value="DEBUG"/>
+                                    <xs:enumeration value="INFO"/>
+                                    <xs:enumeration value="WARN"/>
+                                    <xs:enumeration value="ERROR"/>
+                                    <xs:enumeration value="FATAL"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="InfoMsg" type="xs:string" minOccurs="0"/>
+                        <xs:element name="InputMessage" type="xs:string" minOccurs="0"/>
+                        <xs:element name="OutputMessage" type="xs:string" minOccurs="0"/>
+                        <xs:element name="LogInDBFlag" type="xs:string" minOccurs="0"/>
+                        <xs:element name="AdditionalInfo" type="ns1:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="CustomerToAccount">
+        <wsdl:port name="WSCustomerToAccount" binding="tns:WSCustomerToAccountBinding">
+            <soap:address location="http://tbxtest:9510/BusinessProcesses/CustomerView/CustomerToAccount/StarterProcesses/CustomerToAccount"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="PortType">
+        <wsdl:operation name="CustomerToAccountOp">
+            <wsdl:input message="tns:CustomerToAccountRequest"/>
+            <wsdl:output message="tns:CustomerToAccountResponse"/>
+            <wsdl:fault name="fault1" message="tns:CustomerToAccountFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WSCustomerToAccountBinding" type="tns:PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="CustomerToAccountOp">
+            <soap:operation style="document" soapAction="/BusinessProcesses/CustomerToAccount/StarterProcesses/CustomerToAccount"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="Request"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="Response"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault use="literal" name="fault1"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="CustomerToAccountRequest">
+        <wsdl:part name="Request" element="ns0:CustomerToAccountRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CustomerToAccountResponse">
+        <wsdl:part name="Response" element="ns0:CustomerToAccountResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CustomerToAccountFault">
+        <wsdl:part name="FaultDetails" element="ns1:FaultDetails"/>
+    </wsdl:message>
+</wsdl:definitions>

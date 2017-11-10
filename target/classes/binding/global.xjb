@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings version="2.1"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.001.001.01.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+       <!--     <jaxb:package name="swift.xsd.pain_001_001_01" />-->
+            <jaxb:package name="ifx1_7.pain.one.one.one"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+   <!-- <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.001.001.02.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="iso.std.iso._20022.tech.xsd.pain_001_001_02" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>-->
+    <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.001.001.03.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+           <!-- <jaxb:package name="iso.std.iso._20022.tech.xsd.pain_001_001_03" />-->
+            <jaxb:package name="ifx1_7.pain.one.one.three"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.002.001.01.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+            <!--<jaxb:package name="swift.xsd.pain_002_001_01" />-->
+            <jaxb:package name="ifx1_7.pain.two.one.one"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+  <!--  <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.002.001.02.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="iso.std.._20022.tech.xsd.pain_001_001_03iso._20022.tech.xsd.pain_002_001_02" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>-->
+    <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.002.001.03.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+           <!-- <jaxb:package name="iso.std.iso._20022.tech.xsd.pain_002_001_03" />-->
+            <jaxb:package name="ifx1_7.pain.two.one.three"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+  <!--  <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.006.001.01.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="iso.std.iso._20022.tech.xsd.pain_006_001_01" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>-->
+  <!--  <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.007.001.01.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="iso.std.iso._20022.tech.xsd.pain_007_001_01" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>-->
+    <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.007.001.02.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+            <!--<jaxb:package name="iso.std.iso._20022.tech.xsd.pain_007_001_02" />-->
+            <jaxb:package name="ifx1_7.pain.seven.one.two"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.008.001.01.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+          <!--  <jaxb:package name="iso.std.iso._20022.tech.xsd.pain_008_001_01" />-->
+            <jaxb:package name="ifx1_7.pain.eight.one.one"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+ <!--   <jaxb:bindings schemaLocation="../SharedResources/SchemaDefinitions/IFX/2_3/pain.008.001.02.xsd"  node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="iso.std.iso._20022.tech.xsd.pain_008_001_02" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>-->
+
+</jaxb:bindings>

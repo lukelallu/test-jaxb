@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns:ifx="IFX2_3"
+	 xmlns:cmn="http://www.mtb.com/canonical/schema/MTB/1_1/Common"
+	 targetNamespace="http://www.mtb.com/canonical/schema/MTB/1_1/Common"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="IFX2_3" schemaLocation="../../IFX/2_3/IFX.xsd"/>
+	<xs:complexType name="LoginIdent_Type">
+		<xs:sequence>
+			<xs:element ref="ifx:LoginAuthority" minOccurs="0"/>
+			<xs:element ref="ifx:LoginName" minOccurs="0"/>
+			<xs:element ref="cmn:EmployeeIdent" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AuthorityLevel_Type">
+		<xs:sequence>
+			<xs:element name="AuthorityLevelId" type="ifx:ApprovalIdent_Type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EmployeeId_Type">
+		<xs:simpleContent>
+			<xs:extension base="ifx:ApprovalIdent_Type"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="LoginIdent" type="cmn:LoginIdent_Type"/>
+	<xs:element name="AuthorityLevel" type="cmn:AuthorityLevel_Type"/>
+	<xs:element name="EmployeeId" type="cmn:EmployeeId_Type"/>
+	<xs:complexType name="EmployeeIdent_Type">
+		<xs:sequence>
+			<xs:element ref="cmn:EmployeeId" minOccurs="0"/>
+			<xs:element ref="ifx:PersonData" minOccurs="0"/>
+			<xs:element ref="cmn:AuthorityLevel" minOccurs="0"/>
+			<xs:element name="LOBId" type="ifx:Identifier_Type" minOccurs="0"/>
+			<xs:element name="LOB" type="ifx:C" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmployeeIdent" type="cmn:EmployeeIdent_Type"/>
+	<xs:element name="RelationshipMgr" type="cmn:RelationshipMgr_Type"/>
+	<xs:complexType name="RelationshipMgr_Type">
+		<xs:sequence>
+			<xs:element ref="ifx:RelationshipMgr" minOccurs="0"/>
+			<xs:element ref="cmn:PersonName" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PersonName_Type">
+		<xs:sequence>
+			<xs:element ref="ifx:Language" minOccurs="0"/>
+			<xs:element ref="cmn:FullName" minOccurs="0"/>
+			<xs:element ref="cmn:FamilyName" minOccurs="0"/>
+			<xs:element ref="cmn:GivenName" minOccurs="0"/>
+			<xs:element ref="ifx:MiddleName" minOccurs="0"/>
+			<xs:element ref="ifx:NamePrefix" minOccurs="0"/>
+			<xs:element ref="ifx:NameSuffix" minOccurs="0"/>
+			<xs:element ref="ifx:MaternalName" minOccurs="0"/>
+			<xs:element ref="ifx:PaternalName" minOccurs="0"/>
+			<xs:element ref="ifx:MarriedName" minOccurs="0"/>
+			<xs:element ref="ifx:PreferredName" minOccurs="0"/>
+			<xs:element ref="ifx:LegalNameInd" minOccurs="0"/>
+			<xs:element ref="ifx:PriorNameInd" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PersonName" type="cmn:PersonName_Type"/>
+	<xs:element name="FullName" type="xs:string"/>
+	<xs:element name="FamilyName" type="xs:string"/>
+	<xs:element name="GivenName" type="xs:string"/>
+</xs:schema>

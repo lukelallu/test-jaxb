@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns1="http://schemas.mandtbank.com/EHF" xmlns:tns="http://wsdl.mandtbank.com/2_0/1411509531843/DDABalanceInquiryOp/BusinessProcesses/DDABalanceInquiry__v2/StarterProcesses" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://schemas.mandtbank.com/2_0/Hogan" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://wsdl.mandtbank.com/2_0/1411509531843/DDABalanceInquiryOp/BusinessProcesses/DDABalanceInquiry__v2/StarterProcesses">
+    <wsdl:types>
+        <xs:schema xmlns="http://schemas.mandtbank.com/2_0/Hogan" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.mandtbank.com/2_0/Hogan" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="HardHolds">
+                <xs:sequence>
+                    <xs:element name="holdsClass" type="ns0:string1"/>
+                    <xs:element name="holdsType" type="ns0:string2"/>
+                    <xs:element name="blockCredit" type="ns0:string1"/>
+                    <xs:element name="alertCredit" type="ns0:string1"/>
+                    <xs:element name="blockDebit" type="ns0:string1"/>
+                    <xs:element name="alertDebit" type="ns0:string1"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="DDABalInquiryRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="header">
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="ns0:commonElementsType">
+                                        <xs:sequence>
+                                            <xs:element name="region" minOccurs="0">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:pattern value="\s*|[T][0-9]{2}"/>
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:element>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="accountNumber" type="ns0:integer15"/>
+                        <xs:element name="companyID" type="ns0:integer5"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DDABalInquiryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Success" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="accountNumber" type="ns0:integer15" minOccurs="0"/>
+                                    <xs:element name="shortName" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="companyID" type="ns0:integer5" minOccurs="0"/>
+                                    <xs:element name="productCode" type="ns0:string3" minOccurs="0"/>
+                                    <xs:element name="env" type="ns0:string1"/>
+                                    <xs:element name="longAdjPool" type="ns0:amountType13" minOccurs="0"/>
+                                    <xs:element name="ADDetails" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="avail" type="ns0:amountType13" minOccurs="0"/>
+                                                <xs:element name="availWLine" type="ns0:amountType13" minOccurs="0"/>
+                                                <xs:element name="HardHolds" type="ns0:HardHolds" minOccurs="0" maxOccurs="30"/>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="ODDetails" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="type" type="ns0:string3" minOccurs="0"/>
+                                                <xs:element name="accountNumber" type="ns0:integer18" minOccurs="0"/>
+                                                <xs:element name="adjAvailable" type="ns0:amountType13" minOccurs="0"/>
+                                                <xs:element name="HardHolds" type="ns0:HardHolds" minOccurs="0" maxOccurs="30"/>
+                                                <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Warning" type="ns0:warningType" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element name="AdditionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="CalenderToDateType">
+                <xs:sequence>
+                    <xs:element name="CurrentFee" type="ns0:amountTypeS95V99"/>
+                    <xs:element name="PreviousFee" type="ns0:amountTypeS95V99"/>
+                    <xs:element name="additionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="FeeElementType">
+                <xs:sequence>
+                    <xs:element name="CalenderToDate" type="ns0:CalenderToDateType"/>
+                    <xs:element name="YearToDate" type="ns0:YearToDateType"/>
+                    <xs:element name="PreviousYearFee" type="ns0:amountTypeS97V99" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Previous years fee paid</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="additionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="YearToDateType">
+                <xs:sequence>
+                    <xs:element name="CurrentFee" type="ns0:amountTypeS97V99"/>
+                    <xs:element name="PreviousFee" type="ns0:amountTypeS97V99"/>
+                    <xs:element name="additionalInfo" type="ns0:additionalInfoType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="accountNumberType">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="16"/>
+                    <xs:pattern value="([a-zA-Z0-9])*"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="additionalInfoType">
+                <xs:sequence>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" namespace="##any"/>
+                </xs:sequence>
+                <xs:anyAttribute processContents="strict" namespace="##any"/>
+            </xs:complexType>
+            <xs:complexType name="additionalInfoType2">
+                <xs:sequence>
+                    <xs:element name="mailCode" type="xs:string" minOccurs="0"/>
+                    <xs:element ref="ns0:additionalInfo" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="sinceVersion" fixed="1.1.0" type="xs:string"/>
+            </xs:complexType>
+            <xs:simpleType name="amountType13">
+                <xs:restriction base="xs:decimal">
+                    <xs:totalDigits value="15"/>
+                    <xs:fractionDigits value="2"/>
+                    <xs:pattern value="[+-]?\d{1,13}(\.\d{1,2})?"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="amountTypeS911V99">
+                <xs:restriction base="xs:decimal">
+                    <xs:pattern value="[+-]?\d{1,11}(\.\d{1,2})?"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="amountTypeS95V99">
+                <xs:restriction base="xs:decimal">
+                    <xs:pattern value="[+-]?\d{1,5}(\.\d{1,2})?"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="amountTypeS97V99">
+                <xs:restriction base="xs:decimal">
+                    <xs:pattern value="[+-]?\d{1,7}(\.\d{1,2})?"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="commonElementsType">
+                <xs:sequence>
+                    <xs:element name="requestingApp" type="xs:string"/>
+                    <xs:element name="userID" type="xs:string"/>
+                    <xs:element name="password" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="enumType">
+                <xs:sequence>
+                    <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Description" type="ns0:stringYNB" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="identifier">
+                <xs:sequence>
+                    <xs:element name="value" type="ns0:string15" minOccurs="0"/>
+                    <xs:element name="type" type="ns0:string4" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="integer1">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="integer15">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="15"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="integer18">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="18"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="integer5">
+                <xs:restriction base="xs:integer">
+                    <xs:totalDigits value="5"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="productCodeType">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="3"/>
+                    <xs:pattern value="([a-zA-Z0-9])*"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string1">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string15">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="15"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string16">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="16"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string2">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="2"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string22">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="22"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string25">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="25"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string3">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="3"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string4">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="4"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string40">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="40"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string5">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="5"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string7">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="7"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="string9">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="9"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="stringYNB">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Yes"/>
+                    <xs:enumeration value="No"/>
+                    <xs:enumeration value=""/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="warningType">
+                <xs:sequence>
+                    <xs:element name="warningCode" type="xs:string"/>
+                    <xs:element name="warningDesc" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="additionalInfo" type="ns0:additionalInfoType"/>
+            <xs:element name="error">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="errorCode" type="xs:string"/>
+                        <xs:element name="errorMsg" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns="http://schemas.mandtbank.com/EHF" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.mandtbank.com/EHF" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="additionalInfoType">
+                <xs:sequence>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" namespace="##any"/>
+                </xs:sequence>
+                <xs:anyAttribute processContents="strict" namespace="##any"/>
+            </xs:complexType>
+            <xs:element name="ContactInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Mail" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="MailFrom" type="xs:string"/>
+                                    <xs:element name="MailTo" type="xs:string"/>
+                                    <xs:element name="MailServer" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Names" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element name="AdditionalInfo" type="ns1:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Error">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Err_Code" type="xs:token"/>
+                        <xs:element name="Err_Msg" type="xs:string" minOccurs="0"/>
+                        <xs:element name="StackTrace" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CatchBlockDetails" type="xs:string" minOccurs="0"/>
+                        <xs:element name="AdditionalInfo" type="ns1:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ErrorDetails">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns1:Logging"/>
+                        <xs:element ref="ns1:Error" minOccurs="0"/>
+                        <xs:element name="FileData" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="FileName" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="LastModifiedDateTime" type="xs:dateTime" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="ns1:Generic"/>
+                        <xs:element ref="ns1:ContactInfo" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ErrorInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ErrorCode" type="xs:string" minOccurs="0"/>
+                        <xs:element name="ErrorMessage" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FaultDetails">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="FaultCode" type="xs:string"/>
+                        <xs:element name="FaultString" type="xs:string" minOccurs="0"/>
+                        <xs:element name="InputMessage" type="xs:string" minOccurs="0"/>
+                        <xs:element name="Timestamp" type="xs:dateTime" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Generic">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="CallingAppName" type="xs:string"/>
+                        <xs:element name="UserID" type="xs:string"/>
+                        <xs:element name="Environment">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="DEV"/>
+                                    <xs:enumeration value="TEST"/>
+                                    <xs:enumeration value="CERT"/>
+                                    <xs:enumeration value="PROD"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="ProjectName" type="xs:string"/>
+                        <xs:element name="ServiceName" type="xs:string"/>
+                        <xs:element name="ActivityName" type="xs:string"/>
+                        <xs:element name="Timestamp" type="xs:dateTime"/>
+                        <xs:element name="ServerName" type="xs:string"/>
+                        <xs:element name="AdditionalInfo" type="ns1:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Logging">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Level">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:token">
+                                    <xs:enumeration value="DEBUG"/>
+                                    <xs:enumeration value="INFO"/>
+                                    <xs:enumeration value="WARN"/>
+                                    <xs:enumeration value="ERROR"/>
+                                    <xs:enumeration value="FATAL"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="InfoMsg" type="xs:string" minOccurs="0"/>
+                        <xs:element name="InputMessage" type="xs:string" minOccurs="0"/>
+                        <xs:element name="OutputMessage" type="xs:string" minOccurs="0"/>
+                        <xs:element name="LogInDBFlag">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Yes"/>
+                                    <xs:enumeration value="No"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="AdditionalInfo" type="ns1:additionalInfoType" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="WSDDABalanceInquiry__v2">
+        <wsdl:port name="WSDDABalanceInquiry__v2" binding="tns:WSDDABalanceInquiry__v2Binding">
+            <soap:address location="http://tbxtest:7128/BusinessProcesses/DDABalanceInquiry_v2/StarterProcesses/WSDDABalanceInquiry_v2"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="PortType_v2">
+        <wsdl:operation name="DDABalanceInquiryOp">
+            <wsdl:input message="tns:DDABalanceInquiryRequest"/>
+            <wsdl:output message="tns:DDABalanceInquiryResponse"/>
+            <wsdl:fault name="fault1" message="tns:DDABalanceInquiryFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WSDDABalanceInquiry__v2Binding" type="tns:PortType_v2">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="DDABalanceInquiryOp">
+            <soap:operation style="document" soapAction="/BusinessProcesses/DDABalanceInquiry_v2/StarterProcesses/WSDDABalanceInquiry_v2"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="Request"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="Response"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault use="literal" name="fault1"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="DDABalanceInquiryRequest">
+        <wsdl:part name="Request" element="ns0:DDABalInquiryRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DDABalanceInquiryResponse">
+        <wsdl:part name="Response" element="ns0:DDABalInquiryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="DDABalanceInquiryFault">
+        <wsdl:part name="Fault" element="ns1:FaultDetails"/>
+    </wsdl:message>
+</wsdl:definitions>

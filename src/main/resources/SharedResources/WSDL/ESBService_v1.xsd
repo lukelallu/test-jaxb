@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns="http://www.mtb.com/webservices/wsdl/ESBService_v1"
+	 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 targetNamespace="http://www.mtb.com/webservices/wsdl/ESBService_v1"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:simpleType name="UUID_Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+			<xs:pattern value="([0-9]|[a-f]|[A-F]){8}(-([0-9]|[a-f]|[A-F]){4})(-([0-9]|[a-f]|[A-F]){4})(-([0-9]|[a-f]|[A-F]){4})(-([0-9]|[a-f]|[A-F]){12})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Miscue_Type">
+		<xs:sequence>
+			<xs:element ref="code"/>
+			<xs:element ref="sourceSystemCode" minOccurs="0"/>
+			<xs:element ref="severity"/>
+			<xs:element ref="alertGroup" minOccurs="0"/>
+			<xs:element ref="description"/>
+			<xs:element ref="sourceSystemDescription" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FaultDetail_Type">
+		<xs:sequence>
+			<xs:element ref="requestIdentifier"/>
+			<xs:element ref="alertGroup"/>
+			<xs:element name="miscue" type="Miscue_Type" maxOccurs="unbounded"/>
+			<xs:element name="timestamp" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Message_Type">
+		<xs:sequence>
+			<xs:element ref="code"/>
+			<xs:element ref="sourceSystemCode" minOccurs="0"/>
+			<xs:element ref="severity"/>
+			<xs:element ref="description"/>
+			<xs:element ref="sourceSystemDescription" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Credential_Type">
+		<xs:sequence>
+			<xs:element name="sequenceNumber" type="xs:int"/>
+			<xs:element name="userIdentifier" type="xs:string"/>
+			<xs:element name="password" type="xs:string" minOccurs="0"/>
+			<xs:element name="securityToken" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Header_Type">
+		<xs:sequence>
+			<xs:element name="asynchronousRequestIdentifier" type="UUID_Type" minOccurs="0"/>
+			<xs:element name="originatorIdentifier" type="xs:string"/>
+			<xs:element name="credential" type="Credential_Type" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="severity">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:enumeration value="1"/>
+				<xs:enumeration value="2"/>
+				<xs:enumeration value="3"/>
+				<xs:enumeration value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="sourceSystemCode" type="xs:string"/>
+	<xs:element name="sourceSystemDescription" type="xs:string"/>
+	<xs:element name="requestIdentifier" type="UUID_Type"/>
+	<xs:element name="code" type="xs:string"/>
+	<xs:element name="description" type="xs:string"/>
+	<xs:element name="alertGroup" type="xs:string"/>
+	<xs:element name="header" type="Header_Type"/>
+	<xs:element name="message" type="Message_Type"/>
+	<xs:element name="faultDetail" type="FaultDetail_Type"/>
+</xs:schema>
